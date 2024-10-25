@@ -5,6 +5,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { useTranslations } from "next-intl";
 
 const carouselItems = [
   "canchas",
@@ -12,9 +13,10 @@ const carouselItems = [
   "auditorios",
   "salas",
   "laboratorios",
-];
+] as const;
 
 export default function HeroCarousel() {
+  const t = useTranslations("HomePage.espacios");
   return (
     <Carousel
       className="max-w-sm"
@@ -25,10 +27,10 @@ export default function HeroCarousel() {
         loop: true,
       }}
     >
-      <CarouselContent className="h-14">
+      <CarouselContent className="h-16">
         {carouselItems.map((item) => (
           <CarouselItem key={item}>
-            <span className="text-orange-500">{item}</span>
+            <span className="text-orange-500">{t(item)}</span>
           </CarouselItem>
         ))}
       </CarouselContent>

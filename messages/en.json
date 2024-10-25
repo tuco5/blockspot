@@ -1,6 +1,14 @@
 {
   "HomePage": {
-    "hero": "Under construction"
+    "hero": "Manage and reserve",
+    "subtitulo": "Your definitive solution for managing shared spaces",
+    "espacios": {
+      "canchas": "tennis court",
+      "terrazas": "terrace",
+      "auditorios": "auditorium",
+      "salas": "hall",
+      "laboratorios": "labs"
+    }
   },
   "LocaleSwitcher": {
     "es": "Spanish",
