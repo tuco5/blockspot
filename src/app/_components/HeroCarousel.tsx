@@ -4,6 +4,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 import Autoplay from "embla-carousel-autoplay";
 import { useTranslations } from "next-intl";
 
@@ -17,6 +18,15 @@ const carouselItems = [
 
 export default function HeroCarousel() {
   const t = useTranslations("HomePage.espacios");
+
+  const styles = [
+    "text-rose-500",
+    "text-cyan-500",
+    "text-pink-500",
+    "text-emerald-500",
+    "text-purple-500",
+  ];
+
   return (
     <Carousel
       className="max-w-sm"
@@ -28,9 +38,9 @@ export default function HeroCarousel() {
       }}
     >
       <CarouselContent className="h-16">
-        {carouselItems.map((item) => (
+        {carouselItems.map((item, i) => (
           <CarouselItem key={item}>
-            <span className="text-orange-500">{t(item)}</span>
+            <span className={cn(styles[i])}>{t(item)}</span>
           </CarouselItem>
         ))}
       </CarouselContent>

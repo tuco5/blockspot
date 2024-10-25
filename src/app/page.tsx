@@ -25,7 +25,9 @@ function Hero() {
           <HeroCarousel />
         </h1>
 
-        <p className="text-wrap text-2xl text-stone-400">{t("subtitulo")}</p>
+        <p className="text-wrap text-2xl text-slate-500 dark:text-slate-300">
+          {t("subtitulo")}
+        </p>
       </div>
     </main>
   );
