@@ -8,7 +8,7 @@ export function LocaleSwitcher() {
 
   return (
     <LocaleSwitcherSelect
-      defaultValue={t(locale)}
+      defaultValue={locale}
       items={locales.map((l) => ({ value: l, label: t(l) }))}
       label={t("label")}
     />

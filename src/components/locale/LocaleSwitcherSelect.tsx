@@ -23,7 +23,7 @@ export default function LocaleSwitcherSelect({
   items,
   label,
 }: LocaleSwitcherSelectProps) {
-  const [isPending, startTransition] = useTransition();
+  const [_, startTransition] = useTransition();
 
   function onChange(value: string) {
     const locale = value as Locale;
@@ -31,7 +31,7 @@ export default function LocaleSwitcherSelect({
       await setUserLocale(locale);
     });
   }
-  console.log({ isPending, defaultValue });
+
   return (
     <div className="relative">
       <Select defaultValue={defaultValue} onValueChange={onChange}>
