@@ -35,7 +35,7 @@ function Hero() {
 
 function Header() {
   return (
-    <header className="flex w-full justify-between border-b">
+    <header className="flex w-full justify-center border-b">
       <div className="dark:primary flex w-full max-w-screen-lg items-center justify-between p-4">
         <Logo className="text-xl" />
         <div className="flex items-center gap-2">
