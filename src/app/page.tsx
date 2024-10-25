@@ -1,17 +1,15 @@
+import { LocaleSwitcher } from "@/components/locale";
 import { DarkModeToggle } from "@/components/theme/DarkModeToggle";
-import LocaleSwitcher from "@/components/locale/LocaleSwitcher";
 import { useTranslations } from "next-intl";
-import PageTemplate from "@/components/common/PageTemplate";
-import { VercelIcon } from "@/components/common/Icons";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { PageTemplate, Footer } from "@/components/template";
+import { Logo } from "@/components/common";
+import HeroCarousel from "./_components/HeroCarousel";
 
 export default function HomePage() {
   return (
     <PageTemplate>
       <Header />
       <Hero />
-
       <Footer />
     </PageTemplate>
   );
@@ -20,53 +18,31 @@ export default function HomePage() {
 function Hero() {
   const t = useTranslations("HomePage");
   return (
-    <main className="flex h-screen w-full flex-col items-center justify-center">
-      <p>{t("hero")}</p>
-    </main>
-  );
-}
+    <main className="flex h-screen w-full items-center justify-center">
+      <div className="flex h-1/2 flex-col gap-4 p-8">
+        <h1 className="flex flex-wrap items-center text-5xl font-semibold tracking-tight">
+          <span>Gestiona y reserva&nbsp;</span>
+          <HeroCarousel />
+        </h1>
 
-function Logo() {
-  return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-xl font-semibold">
-        <Link href="/">
-          block<span className="text-orange-500">spot</span>
-        </Link>
-      </h1>
-    </div>
+        <p className="text-wrap text-2xl text-stone-400">
+          Tu solución definitiva para la gestión de espacios compartidos.
+        </p>
+      </div>
+    </main>
   );
 }
 
 function Header() {
   return (
-    <header className="flex w-full max-w-screen-lg items-center justify-between px-4 py-2">
-      <Logo />
-      <div className="flex items-center gap-2">
-        <DarkModeToggle />
-        <LocaleSwitcher />
+    <header className="flex w-full justify-between border-b">
+      <div className="flex w-full max-w-screen-lg items-center justify-between bg-stone-600/10 p-4">
+        <Logo className="text-xl" />
+        <div className="flex items-center gap-2">
+          <DarkModeToggle />
+          <LocaleSwitcher />
+        </div>
       </div>
     </header>
-  );
-}
-
-function Footer() {
-  const linkStyle =
-    "text-slate-500 hover:text-slate-800 dark:text-slate-300 dark:hover:text-white transition-all";
-  return (
-    <footer className="flex w-full justify-center border-t bg-slate-300/10">
-      <div className="flex w-full max-w-screen-lg items-center justify-between px-4 py-6 text-sm">
-        <Link href="https://www.linkedin.com/in/tuco5/" className={linkStyle}>
-          Copyright © 2024 tuco5
-        </Link>
-
-        <Link
-          href="https://vercel.com/"
-          className={cn("flex items-baseline gap-1", linkStyle)}
-        >
-          <span> Hosted on</span> <VercelIcon /> <span>Vercel</span>
-        </Link>
-      </div>
-    </footer>
   );
 }
