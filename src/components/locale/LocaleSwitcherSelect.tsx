@@ -35,9 +35,9 @@ export default function LocaleSwitcherSelect({
   return (
     <div className="relative">
       <Select defaultValue={defaultValue} onValueChange={onChange}>
-        <SelectTrigger aria-label={label} withIcon={false}>
+        <SelectTrigger aria-label={label} withIcon={false} className="h-8">
           <SelectValue>
-            <Languages className="h-5 w-5" />
+            <Languages className="h-4 w-4" />
           </SelectValue>
         </SelectTrigger>
         <SelectContent>

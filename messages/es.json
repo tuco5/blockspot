@@ -1,6 +1,14 @@
 {
   "HomePage": {
-    "hero": "En construcción"
+    "hero": "Gestiona y reserva",
+    "subtitulo": "Tu solución definitiva para la gestión de espacios compartidos",
+    "espacios": {
+      "canchas": "canchas",
+      "terrazas": "terrazas",
+      "auditorios": "auditorios",
+      "salas": "sala de juntas",
+      "laboratorios": "laboratorios"
+    }
   },
   "LocaleSwitcher": {
     "es": "Español",
