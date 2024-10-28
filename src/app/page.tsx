@@ -1,9 +1,8 @@
-import { LocaleSwitcher } from "@/components/locale";
-import { DarkModeToggle } from "@/components/theme/DarkModeToggle";
 import { useTranslations } from "next-intl";
-import { PageTemplate, Footer } from "@/components/template";
-import { Logo } from "@/components/common";
+import { PageTemplate, Footer, Header } from "@/components/template";
 import HeroCarousel from "./_components/HeroCarousel";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -28,21 +27,17 @@ function Hero() {
         <p className="text-wrap text-2xl text-slate-500 dark:text-slate-300">
           {t("subtitulo")}
         </p>
-      </div>
-    </main>
-  );
-}
 
-function Header() {
-  return (
-    <header className="flex w-full justify-center border-b">
-      <div className="dark:primary flex w-full max-w-screen-lg items-center justify-between p-4">
-        <Logo className="text-2xl" />
-        <div className="flex items-center gap-2">
-          <DarkModeToggle />
-          <LocaleSwitcher />
+        <div className="flex w-full flex-col items-stretch gap-6 p-8 sm:flex-row sm:pl-0">
+          <Button asChild variant="primary" size="lg" rounded="full">
+            <Link href="/login">{t("cta")}</Link>
+          </Button>
+
+          <Button asChild variant="secondary" size="lg" rounded="full">
+            <Link href="/">{t("precios")}</Link>
+          </Button>
         </div>
       </div>
-    </header>
+    </main>
   );
 }
