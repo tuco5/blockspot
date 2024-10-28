@@ -2,6 +2,8 @@
   "HomePage": {
     "hero": "Gestiona y reserva",
     "subtitulo": "Tu solución definitiva para la gestión de espacios compartidos",
+    "cta": "Empezar",
+    "precios": "Precios",
     "espacios": {
       "canchas": "canchas",
       "terrazas": "terrazas",
@@ -9,6 +11,10 @@
       "salas": "salónes",
       "laboratorios": "laboratorios"
     }
+  },
+  "LoginPage": {
+    "login": "Iniciar sesión",
+    "signup": "Registrarse"
   },
   "LocaleSwitcher": {
     "es": "Español",

@@ -2,6 +2,8 @@
   "HomePage": {
     "hero": "Manage and reserve",
     "subtitulo": "Your definitive solution for managing shared spaces",
+    "cta": "Get started",
+    "precios": "Pricing",
     "espacios": {
       "canchas": "tennis court",
       "terrazas": "terrace",
@@ -9,6 +11,10 @@
       "salas": "rooms",
       "laboratorios": "labs"
     }
+  },
+  "LoginPage": {
+    "login": "Log in",
+    "signup": "Sign up"
   },
   "LocaleSwitcher": {
     "es": "Spanish",
