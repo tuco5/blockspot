@@ -1,13 +1,15 @@
 "use server";
-
+import { createClient } from "@/server/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-
-import { createClient } from "@/utils/supabase/server";
 
 interface FormState {
   error: string;
 }
+
+export const initialState: FormState = {
+  error: "",
+};
 
 export async function login(prevState: FormState, formData: FormData) {
   const supabase = await createClient();
