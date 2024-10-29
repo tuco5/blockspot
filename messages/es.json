@@ -14,7 +14,17 @@
   },
   "LoginPage": {
     "login": "Iniciar sesión",
-    "signup": "Registrarse"
+    "signup": "Registrarse",
+    "form": {
+      "title": "Iniciar sesión",
+      "description": "Ingrese su nombre de usuario y contraseña para continuar.",
+      "email": "Correo",
+      "password": "Contraseña",
+      "errors": {
+        "invalid_credentials": "Credenciales inválidas",
+        "required": "Requerido"
+      }
+    }
   },
   "LocaleSwitcher": {
     "es": "Español",

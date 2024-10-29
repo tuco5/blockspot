@@ -1,26 +1,73 @@
 "use client";
 import { useActionState } from "react";
-import { login, signup } from "../actions";
+import { useTranslations } from "next-intl";
+import Form from "next/form";
+import { FormState, signin } from "../actions";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { InputField } from "@/components/common/InputField";
 
-const initialState = {
-  error: "",
-};
+type FormError = keyof IntlMessages["LoginPage"]["form"]["errors"];
 
 export default function SignInForm() {
-  const [loginState, loginAction] = useActionState(login, initialState);
+  const [loginState, loginAction] = useActionState(signin, {
+    status: "idle",
+    fieldErrors: {},
+  });
+
+  const t = useTranslations("LoginPage");
+
+  console.log({ loginState });
 
   return (
-    <form className="flex flex-col">
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" type="email" required />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" type="password" required />
-      <div className="flex items-center justify-center gap-4">
-        <button className="bg-blue-300" formAction={loginAction}>
-          Log in
-        </button>
-      </div>
-      <p className="text-red-500">{loginState.error}</p>
-    </form>
+    <Form action={loginAction} noValidate>
+      <Card className="flex flex-col gap-2">
+        <CardHeader>
+          <CardTitle className="text-2xl">{t("form.title")}</CardTitle>
+          <CardDescription>{t("form.description")}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-6">
+          <InputField
+            label={t("form.email")}
+            name="email"
+            type="email"
+            required
+          />
+
+          <InputField
+            label={t("form.password")}
+            name="password"
+            type="password"
+            required
+          />
+
+          <Message state={loginState} />
+        </CardContent>
+        <CardFooter className="flex justify-center">
+          <Button
+            variant="primary"
+            rounded="full"
+            type="submit"
+            className="px-8 py-5 text-xl"
+          >
+            {t("login")}
+          </Button>
+        </CardFooter>
+      </Card>
+    </Form>
   );
+}
+
+function Message({ state }: { state: FormState }) {
+  if (state.status === "error" && state.fieldErrors.form)
+    return <p className="text-red-500">Error: {state.fieldErrors.form}</p>;
+
+  return null;
 }
