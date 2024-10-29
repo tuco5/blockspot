@@ -2,12 +2,28 @@
   "HomePage": {
     "hero": "Gestiona y reserva",
     "subtitulo": "Tu solución definitiva para la gestión de espacios compartidos",
+    "cta": "Empezar",
+    "precios": "Precios",
     "espacios": {
       "canchas": "canchas",
       "terrazas": "terrazas",
       "auditorios": "auditorios",
       "salas": "salónes",
       "laboratorios": "laboratorios"
+    }
+  },
+  "LoginPage": {
+    "login": "Iniciar sesión",
+    "signup": "Registrarse",
+    "form": {
+      "title": "Iniciar sesión",
+      "description": "Ingrese su nombre de usuario y contraseña para continuar.",
+      "email": "Correo",
+      "password": "Contraseña",
+      "errors": {
+        "invalid_credentials": "Credenciales inválidas",
+        "required": "Requerido"
+      }
     }
   },
   "LocaleSwitcher": {

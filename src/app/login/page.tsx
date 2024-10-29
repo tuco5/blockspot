@@ -1,30 +1,32 @@
-"use client";
-import { useFormState } from "react-dom";
-import { login, signup } from "./actions";
-
-const initialState = {
-  error: "",
-};
+import { useTranslations } from "next-intl";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SignInForm from "./_components/SignInForm";
+import SignUpForm from "./_components/SignUpForm";
+import { Header, PageTemplate } from "@/components/template";
 
 export default function LoginPage() {
-  const [loginState, loginAction] = useFormState(login, initialState);
-  const [signupState, signupAction] = useFormState(signup, initialState);
+  const t = useTranslations("LoginPage");
   return (
-    <form className="flex flex-col">
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" type="email" required />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" type="password" required />
-      <div className="flex items-center justify-center gap-4">
-        <button className="bg-blue-300" formAction={loginAction}>
-          Log in
-        </button>
-        <button className="bg-blue-300" formAction={signupAction}>
-          Sign up
-        </button>
-      </div>
-      <p className="text-red-500">{loginState.error}</p>
-      <p className="text-red-500">{signupState.error}</p>
-    </form>
+    <PageTemplate>
+      <Header />
+      <main className="mt-10 flex h-[70vh] w-full justify-center">
+        <Tabs defaultValue="login" className="w-[400px]">
+          <TabsList className="w-full justify-center">
+            <TabsTrigger className="w-1/2" value="login">
+              {t("login")}
+            </TabsTrigger>
+            <TabsTrigger className="w-1/2" value="signup">
+              {t("signup")}
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="login">
+            <SignInForm />
+          </TabsContent>
+          <TabsContent value="signup">
+            <SignUpForm />
+          </TabsContent>
+        </Tabs>
+      </main>
+    </PageTemplate>
   );
 }
