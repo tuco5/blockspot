@@ -135,6 +135,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8.11.0
         version: 8.11.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.6.3)
+      chromatic:
+        specifier: ^11.16.1
+        version: 11.16.1
       eslint:
         specifier: ^9.13.0
         version: 9.13.0(jiti@1.21.6)
