@@ -20,7 +20,8 @@
     "password": "Password",
     "errors": {
       "invalid_credentials": "Invalid login credentials",
-      "required": "Required"
+      "required": "Required",
+      "oops": "Oops, something went wrong"
     },
     "button": "Sign In"
   },
