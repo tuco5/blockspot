@@ -1,36 +1,19 @@
 import { cn } from "@/lib/utils";
+import { Input, InputProps } from "../ui/input";
+import { ErrorMessages } from "./ErrorMessages";
+import { Label } from "../ui/label";
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
-
-interface InputFieldProps extends InputProps {
+interface FormInputFieldProps extends InputProps {
   label?: string;
   errors?: string[];
 }
-/* TODOs: 
-  - add placeholder support
-*/
 
-export function InputField({
+export function FormInputField({
   label = "",
   errors = [],
   className,
   ...props
-}: InputFieldProps) {
-  const ErrorMessages = () => {
-    if (errors?.length > 0) {
-      return (
-        <ul className="flex flex-col gap-1">
-          {errors.map((error) => (
-            <li key={error} className="px-3 text-xs text-red-500">
-              {error}
-            </li>
-          ))}
-        </ul>
-      );
-    }
-    return null;
-  };
-
+}: FormInputFieldProps) {
   const inputErrorStyle =
     errors?.length > 0 ? "border-red-500" : "border-stone-300";
   const labelErrorStyle =
@@ -39,7 +22,7 @@ export function InputField({
   return (
     <div>
       <div className="mb-1.5 flex flex-col-reverse">
-        <input
+        <Input
           id={props.name}
           className={cn(
             "peer block w-full rounded-lg border border-stone-300 bg-transparent px-2.5 pb-2.5 pt-4 text-sm text-stone-900 transition-colors focus:border-sky-500 focus:outline-none focus:ring-0 dark:text-white",
@@ -47,7 +30,7 @@ export function InputField({
           )}
           {...props}
         />
-        <label
+        <Label
           htmlFor={props.name}
           className={cn(
             "px-2 text-sm transition-all peer-focus:text-sky-500",
@@ -55,9 +38,9 @@ export function InputField({
           )}
         >
           {label}
-        </label>
+        </Label>
       </div>
-      <ErrorMessages />
+      <ErrorMessages errors={errors} />
     </div>
   );
 }

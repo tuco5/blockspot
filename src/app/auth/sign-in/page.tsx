@@ -13,7 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { InputField } from "@/components/common/InputField";
+import { FormInputField } from "@/components/forms";
 
 type SigninError = keyof IntlMessages["SignInPage"]["errors"];
 
@@ -35,9 +35,7 @@ export default function SigninPage() {
           <CardDescription>{t("description")}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-6">
-          <InputField
-            required
-            label={t("email")}
+          <FormInputField
             name="email"
             type="email"
             placeholder="jhon.doe@example.com"
@@ -46,12 +44,11 @@ export default function SigninPage() {
             )}
           />
 
-          <InputField
+          <FormInputField
             label={t("password")}
             name="password"
             type="password"
             placeholder="********"
-            required
             errors={loginState.errors?.password?.map((err) =>
               t(`errors.${err as SigninError}`),
             )}
@@ -80,10 +77,4 @@ export default function SigninPage() {
       </Card>
     </Form>
   );
-}
-
-function ErrorMessage({ errors }: { errors?: string[] }) {
-  if (!errors) return null;
-
-  return errors.map((error) => <p className="text-red-500">Error: {error}</p>);
 }
