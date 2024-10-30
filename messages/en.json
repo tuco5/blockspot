@@ -12,20 +12,17 @@
       "laboratorios": "labs"
     }
   },
-  "LoginPage": {
-    "login": "Log in",
-    "signup": "Sign up",
-    "form": {
-      "title": "Sign In to Blockspot",
-      "description": "Enter your username and password to continue.",
-      "email": "Email",
-      "password": "Password",
-      "errors": {
-        "invalid_credentials": "Invalid login credentials",
-
-        "required": "Required"
-      }
-    }
+  "AuthLayout": { "sign-in": "Sign In", "sign-up": "Sign Up" },
+  "SignInPage": {
+    "title": "Sign In to Blockspot",
+    "description": "Enter your username and password to continue.",
+    "email": "Email",
+    "password": "Password",
+    "errors": {
+      "invalid_credentials": "Invalid login credentials",
+      "required": "Required"
+    },
+    "button": "Sign In"
   },
   "LocaleSwitcher": {
     "es": "Spanish",

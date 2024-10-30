@@ -12,19 +12,17 @@
       "laboratorios": "laboratorios"
     }
   },
-  "LoginPage": {
-    "login": "Iniciar sesión",
-    "signup": "Registrarse",
-    "form": {
-      "title": "Iniciar sesión",
-      "description": "Ingrese su nombre de usuario y contraseña para continuar.",
-      "email": "Correo",
-      "password": "Contraseña",
-      "errors": {
-        "invalid_credentials": "Credenciales inválidas",
-        "required": "Requerido"
-      }
-    }
+  "AuthLayout": { "sign-in": "Iniciar sesión", "sign-up": "Registrarse" },
+  "SignInPage": {
+    "title": "Iniciar sesión",
+    "description": "Ingrese su nombre de usuario y contraseña para continuar.",
+    "email": "Correo",
+    "password": "Contraseña",
+    "errors": {
+      "invalid_credentials": "Credenciales inválidas",
+      "required": "Requerido"
+    },
+    "button": "Iniciar sesión"
   },
   "LocaleSwitcher": {
     "es": "Español",

@@ -24,13 +24,11 @@ function Hero() {
           <HeroCarousel />
         </h1>
 
-        <p className="text-wrap text-2xl text-slate-500 dark:text-slate-300">
-          {t("subtitulo")}
-        </p>
+        <p className="text-wrap text-2xl text-slate-500 dark:text-slate-300">{t("subtitulo")}</p>
 
         <div className="flex w-full flex-col items-stretch gap-6 p-8 sm:flex-row sm:pl-0">
           <Button asChild variant="primary" size="lg" rounded="full">
-            <Link href="/login">{t("cta")}</Link>
+            <Link href="/auth">{t("cta")}</Link>
           </Button>
 
           <Button asChild variant="secondary" size="lg" rounded="full">
