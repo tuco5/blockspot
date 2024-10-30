@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Input, InputProps } from "../ui/input";
+import { Input, type InputProps } from "../ui/input";
 import { ErrorMessages } from "./ErrorMessages";
 import { Label } from "../ui/label";
 
@@ -11,7 +11,6 @@ interface FormInputFieldProps extends InputProps {
 export function FormInputField({
   label = "",
   errors = [],
-  className,
   ...props
 }: FormInputFieldProps) {
   const inputErrorStyle =
