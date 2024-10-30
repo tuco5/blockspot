@@ -15,7 +15,7 @@
   "AuthLayout": { "sign-in": "Iniciar sesión", "sign-up": "Registrarse" },
   "SignInPage": {
     "title": "Iniciar sesión",
-    "description": "Ingrese su nombre de usuario y contraseña para continuar.",
+    "description": "Ingrese correo y contraseña para continuar.",
     "email": "Correo",
     "password": "Contraseña",
     "errors": {

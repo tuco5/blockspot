@@ -15,7 +15,7 @@
   "AuthLayout": { "sign-in": "Sign In", "sign-up": "Sign Up" },
   "SignInPage": {
     "title": "Sign In to Blockspot",
-    "description": "Enter your username and password to continue.",
+    "description": "Enter email and password to continue.",
     "email": "Email",
     "password": "Password",
     "errors": {

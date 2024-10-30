@@ -37,11 +37,12 @@ export default function AuthLayout({
     <PageTemplate>
       <Header />
       <main className="mt-10 flex h-[70vh] w-full justify-center">
-        <div className="flex flex-col gap-2">
-          <div className="flex w-[400px] gap-2 rounded-lg bg-slate-100 p-2 dark:bg-black/40">
+        <div className="flex w-[400px] flex-col gap-2">
+          <div className="flex w-full gap-2 rounded-lg bg-slate-100 p-2 dark:bg-black/40">
             {tabs.map((tab) => {
               return (
                 <Link
+                  key={tab.name}
                   className={cn(
                     "w-1/2 rounded-lg p-2 text-center",
                     pathname === tab.href
