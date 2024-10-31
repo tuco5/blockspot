@@ -14,12 +14,12 @@ type Tab = {
 const tabs: Tab[] = [
   {
     name: "sign-in",
-    href: "/auth/sign-in",
+    href: "/auth/sign/in",
     current: false,
   },
   {
     name: "sign-up",
-    href: "/auth/sign-up",
+    href: "/auth/sign/up",
     current: false,
   },
 ];

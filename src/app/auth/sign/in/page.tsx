@@ -1,9 +1,10 @@
 "use client";
+import { type SignInError } from "../types";
+
 import { useActionState } from "react";
 import { useTranslations } from "next-intl";
 import Form from "next/form";
 import { FadeLoader } from "react-spinners";
-import { type SignInError } from "../types";
 import { signin } from "./actions";
 import { Button } from "@/components/ui/button";
 import {

@@ -14,7 +14,7 @@
   },
   "AuthLayout": { "sign-in": "Sign In", "sign-up": "Sign Up" },
   "SignInPage": {
-    "title": "Sign In to Blockspot",
+    "title": "Sign in to Blockspot",
     "description": "Enter email and password to continue.",
     "email": "Email",
     "password": "Password",
@@ -24,10 +24,10 @@
       "password_mismatch": "Passwords do not match",
       "oops": "Oops, something went wrong"
     },
-    "button": "Sign In"
+    "button": "Sign in"
   },
   "SignUnPage": {
-    "title": "Sign Up",
+    "title": "Sign up",
     "description": "Create an account with email and password to continue.",
     "email": "Email",
     "password": "Password",
@@ -38,7 +38,7 @@
       "required": "Required",
       "oops": "Oops, something went wrong"
     },
-    "button": "Iniciar sesión"
+    "button": "Sign up"
   },
   "LocaleSwitcher": {
     "es": "Spanish",

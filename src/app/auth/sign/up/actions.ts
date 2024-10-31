@@ -11,7 +11,6 @@ const SignUpSchema = z.object({
 });
 
 export async function signup(prevState: AuthFormState, formData: FormData) {
-  console.log(">>> Running action: signup", { formData });
   const supabase = await createClient();
 
   const validate = SignUpSchema.safeParse({
@@ -27,7 +26,6 @@ export async function signup(prevState: AuthFormState, formData: FormData) {
   }
 
   const { error } = await supabase.auth.signUp(validate.data);
-  console.log(">>> Supabase", { error });
 
   if (error) {
     return { ok: false, errors: { password: ["oops"] } };

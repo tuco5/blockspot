@@ -38,7 +38,7 @@
       "password_mismatch": "La contraseña no coincide",
       "oops": "Ocurrio un error inesperado"
     },
-    "button": "Iniciar sesión"
+    "button": "Registrarme"
   },
   "LocaleSwitcher": {
     "es": "Español",
