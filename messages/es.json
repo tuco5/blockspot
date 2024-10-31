@@ -20,7 +20,8 @@
     "password": "Contraseña",
     "errors": {
       "invalid_credentials": "Credenciales inválidas",
-      "required": "Requerido"
+      "required": "Requerido",
+      "oops": "Ocurrio un error inesperado"
     },
     "button": "Iniciar sesión"
   },

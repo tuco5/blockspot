@@ -9,48 +9,44 @@ const SignInSchema = z.object({
   password: z.string().min(1, "required"),
 });
 
-export type FormState =
-  | {
-      status: "error";
-      fieldErrors: {
-        email?: string[];
-        password?: string[];
-        form?: string[];
-      };
-    }
-  | {
-      status: "idle";
-    };
+export type FormState = {
+  ok: boolean;
+  errors?: {
+    email?: string[];
+    password?: string[];
+  };
+};
 
 export async function signin(prevState: FormState, formData: FormData) {
   const supabase = await createClient();
-
-  console.log({ formData });
 
   const validate = SignInSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
   });
 
-  if (validate.success) {
-    console.log({ data: validate.data });
-  } else {
+  if (!validate.success) {
     return {
-      status: "error" as FormState["status"],
-      fieldErrors: validate.error.flatten().fieldErrors,
+      ok: false,
+      errors: validate.error.flatten().fieldErrors,
     };
   }
 
-  /* const { error } = await supabase.auth.signInWithPassword(data);
-  console.log({ error });
-  if (error) {
-    return { status: "error", message: error.message };
-  } */
+  const { error } = await supabase.auth.signInWithPassword(validate.data);
+
+  if (error?.code === "invalid_credentials") {
+    return {
+      ok: false,
+      errors: { password: [error.code ?? ""], email: [error.code ?? ""] },
+    };
+  } else if (error) {
+    return { ok: false, errors: { password: ["oops"] } };
+  }
 
   revalidatePath("/", "layout");
   redirect("/");
 }
-
+/* 
 export async function signup(prevState: FormState, formData: FormData) {
   const supabase = await createClient();
 
@@ -70,3 +66,4 @@ export async function signup(prevState: FormState, formData: FormData) {
   revalidatePath("/", "layout");
   redirect("/");
 }
+ */

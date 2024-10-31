@@ -2,8 +2,9 @@
 import { useActionState } from "react";
 import { useTranslations } from "next-intl";
 import Form from "next/form";
-import { FormState, signin } from "./actions";
+import { signin } from "./actions";
 import { Button } from "@/components/ui/button";
+import { FadeLoader } from "react-spinners";
 import {
   Card,
   CardContent,
@@ -12,12 +13,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { InputField } from "@/components/common/InputField";
+import { FormInputField } from "@/components/forms";
+
+type SigninError = keyof IntlMessages["SignInPage"]["errors"];
 
 export default function SigninPage() {
-  const [loginState, loginAction] = useActionState(signin, {
-    status: "idle",
-    fieldErrors: {},
+  const [loginState, loginAction, isPending] = useActionState(signin, {
+    ok: false,
+    errors: {},
   });
 
   const t = useTranslations("SignInPage");
@@ -30,35 +33,47 @@ export default function SigninPage() {
           <CardDescription>{t("description")}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-6">
-          <InputField label={t("email")} name="email" type="email" required />
+          <FormInputField
+            label={t("email")}
+            name="email"
+            type="email"
+            placeholder="jhon.doe@example.com"
+            errors={loginState.errors?.email?.map((err) =>
+              t(`errors.${err as SigninError}`),
+            )}
+          />
 
-          <InputField
+          <FormInputField
             label={t("password")}
             name="password"
             type="password"
-            required
+            placeholder="· · · · · · · ·"
+            errors={loginState.errors?.password?.map((err) =>
+              t(`errors.${err as SigninError}`),
+            )}
           />
-
-          <Message state={loginState} />
         </CardContent>
         <CardFooter className="flex justify-center">
-          <Button
-            variant="primary"
-            rounded="full"
-            type="submit"
-            className="px-10 py-[18px] text-xl"
-          >
-            {t("button")}
-          </Button>
+          {isPending ? (
+            <FadeLoader
+              color="hsl(var(--primary))"
+              height={5}
+              width={5}
+              margin={0.2}
+              radius={4}
+            />
+          ) : (
+            <Button
+              variant="primary"
+              rounded="full"
+              type="submit"
+              className="px-10 py-[18px] text-xl"
+            >
+              {t("button")}
+            </Button>
+          )}
         </CardFooter>
       </Card>
     </Form>
   );
-}
-
-function Message({ state }: { state: FormState }) {
-  if (state.status === "error" && state.fieldErrors.form)
-    return <p className="text-red-500">Error: {state.fieldErrors.form}</p>;
-
-  return null;
 }
