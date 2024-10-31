@@ -15,9 +15,10 @@
   "AuthLayout": { "sign-in": "Iniciar sesión", "sign-up": "Registrarse" },
   "SignInPage": {
     "title": "Iniciar sesión",
-    "description": "Ingrese correo y contraseña para continuar.",
+    "description": "Ingresa tu correo y contraseña para continuar, sí aún no tienes cuenta",
     "email": "Correo",
     "password": "Contraseña",
+    "sign_up": "Registrate Ahora",
     "errors": {
       "invalid_credentials": "Credenciales inválidas",
       "required": "Requerido",
@@ -27,8 +28,8 @@
   },
   "SignUnPage": {
     "title": "Registrate",
-    "description": "Crear cuenta con correo y contraseña para continuar. Si ya tienes cuenta",
-    "login": "inicia sesión",
+    "description": "Crea tu cuenta para continuar. Si ya tienes cuenta",
+    "sign_in": "Inicia Sesión Ahora",
     "email": "Correo",
     "password": "Contraseña",
     "confirm-password": "Confirmar contraseña",
@@ -42,7 +43,7 @@
     "button": "Registrarme"
   },
   "ConfirmPage": {
-    "title": "Ya casi estás!",
+    "title": "¡Ya casi estás!",
     "subtitle": "Revisa tu bandeja de entrada y confirmar tu correo"
   },
   "LocaleSwitcher": {

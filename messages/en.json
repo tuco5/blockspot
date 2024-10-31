@@ -15,9 +15,10 @@
   "AuthLayout": { "sign-in": "Sign In", "sign-up": "Sign Up" },
   "SignInPage": {
     "title": "Sign in to Blockspot",
-    "description": "Enter email and password to continue.",
+    "description": "Enter email and password to continue, if you don't have an account",
     "email": "Email",
     "password": "Password",
+    "sign_up": "Sign Up Now",
     "errors": {
       "invalid_credentials": "Invalid login credentials",
       "required": "Required",
@@ -28,8 +29,8 @@
   },
   "SignUnPage": {
     "title": "Sign up",
-    "description": "Create an account with email and password to continue. If you already have an account",
-    "login": "login",
+    "description": "Create an account to continue, if you already have an account",
+    "sign_in": "Sign In Now",
     "email": "Email",
     "password": "Password",
     "confirm-password": "Confirm Password",
