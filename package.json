@@ -18,8 +18,8 @@
     "lint": "next lint",
     "start": "next start",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
-    "storybook:test": "chromatic --exit-zero-on-changes"
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
@@ -44,6 +44,7 @@
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-spinners": "^0.14.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"

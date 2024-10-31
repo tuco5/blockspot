@@ -1,29 +1,33 @@
-# Create T3 App
+# Blockspot:
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This readme is to help the team to set their local env easily.
 
-## What's next? How do I make an app with this?
+# Learn more:
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+This is an [Next.js](https://nextjs.org/docs) App Router with [Supabase](https://supabase.com/docs) as a backend database. To learn more check the tech stack that includes:
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+- Base: [React](https://es.react.dev/reference/react)
+- Style: [Tailwindcss](https://tailwindcss.com/docs/installation)
+- Components: [ShadcUI](https://ui.shadcn.com/docs)
+- i18n: [next-intl](https://next-intl-docs.vercel.app/docs/getting-started)
+- Documentation: [Storybook](https://storybook.js.org/docs)
+- Database: [Supabase](https://supabase.com/docs)
+- ORM: [Prisma](https://www.prisma.io/docs/orm/overview/introduction)
+- Auth: [Supabase](https://supabase.com/docs)
+- ... And more, full dependency list in package.json
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## How to start:
 
-## Learn More
+1. After cloning the repo, make sure to have all the .env variables.
+2. Start Local development with `pnpm dev` or `pnpm turbo`
+3. Navigate to [localhost:3000](http://localhost:3000)
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## Environments:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+We will try to make small changes but frequently.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+`branch` Name the branch as you like but, create the branch with `main` as base. When you are done with your change, open a PR (Pull Request) to `staging` as base, after review and aproval **squash merge** and delete your branch.
 
-## How do I deploy this?
+`staging` In this environment all developers push their changes. Every week we deploy those changes to production.
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+`main` is the production environment and no one can push to it, use it as the base of your `branch`

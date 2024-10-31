@@ -30,7 +30,7 @@ function Hero() {
 
         <div className="flex w-full flex-col items-stretch gap-6 p-8 sm:flex-row sm:pl-0">
           <Button asChild variant="primary" size="lg" rounded="full">
-            <Link href="/login">{t("cta")}</Link>
+            <Link href="/auth/sign/up">{t("cta")}</Link>
           </Button>
 
           <Button asChild variant="secondary" size="lg" rounded="full">
