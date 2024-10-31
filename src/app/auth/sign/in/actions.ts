@@ -1,23 +1,16 @@
 "use server";
+import { type AuthFormState } from "../types";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { createClient } from "@/server/supabase/server";
 import { z } from "zod";
+import { createClient } from "@/server/supabase/server";
 
 const SignInSchema = z.object({
   email: z.string().min(1, "required"),
   password: z.string().min(1, "required"),
 });
 
-export type FormState = {
-  ok: boolean;
-  errors?: {
-    email?: string[];
-    password?: string[];
-  };
-};
-
-export async function signin(prevState: FormState, formData: FormData) {
+export async function signin(prevState: AuthFormState, formData: FormData) {
   const supabase = await createClient();
 
   const validate = SignInSchema.safeParse({
@@ -46,24 +39,3 @@ export async function signin(prevState: FormState, formData: FormData) {
   revalidatePath("/", "layout");
   redirect("/");
 }
-/* 
-export async function signup(prevState: FormState, formData: FormData) {
-  const supabase = await createClient();
-
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
-  };
-
-  const { error } = await supabase.auth.signUp(data);
-
-  if (error) {
-    return { status: "error", message: error.message };
-  }
-
-  revalidatePath("/", "layout");
-  redirect("/");
-}
- */

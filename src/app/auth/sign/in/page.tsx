@@ -1,10 +1,12 @@
 "use client";
+import { type SignInError } from "../types";
+
 import { useActionState } from "react";
 import { useTranslations } from "next-intl";
 import Form from "next/form";
+import { FadeLoader } from "react-spinners";
 import { signin } from "./actions";
 import { Button } from "@/components/ui/button";
-import { FadeLoader } from "react-spinners";
 import {
   Card,
   CardContent,
@@ -14,8 +16,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { FormInputField } from "@/components/forms";
-
-type SigninError = keyof IntlMessages["SignInPage"]["errors"];
 
 export default function SigninPage() {
   const [loginState, loginAction, isPending] = useActionState(signin, {
@@ -28,18 +28,18 @@ export default function SigninPage() {
   return (
     <Form action={loginAction} noValidate>
       <Card className="flex flex-col gap-4">
-        <CardHeader>
+        <CardHeader className="pb-0">
           <CardTitle className="text-3xl">{t("title")}</CardTitle>
           <CardDescription>{t("description")}</CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-col gap-6">
+        <CardContent className="flex flex-col">
           <FormInputField
             label={t("email")}
             name="email"
             type="email"
             placeholder="jhon.doe@example.com"
             errors={loginState.errors?.email?.map((err) =>
-              t(`errors.${err as SigninError}`),
+              t(`errors.${err as SignInError}`),
             )}
           />
 
@@ -49,7 +49,7 @@ export default function SigninPage() {
             type="password"
             placeholder="· · · · · · · ·"
             errors={loginState.errors?.password?.map((err) =>
-              t(`errors.${err as SigninError}`),
+              t(`errors.${err as SignInError}`),
             )}
           />
         </CardContent>
