@@ -25,6 +25,21 @@
     },
     "button": "Iniciar sesión"
   },
+  "SignUnPage": {
+    "title": "Registrate",
+    "description": "Crear cuenta con correo y contraseña para continuar.",
+    "email": "Correo",
+    "password": "Contraseña",
+    "confirm-password": "Confirmar contraseña",
+    "errors": {
+      "too_short": "La contraseña debe tener al menos 8 caracteres",
+      "too_long": "La contraseña debe tener menos de 32 caracteres",
+      "required": "Requerido",
+      "password_mismatch": "La contraseña no coincide",
+      "oops": "Ocurrio un error inesperado"
+    },
+    "button": "Iniciar sesión"
+  },
   "LocaleSwitcher": {
     "es": "Español",
     "en": "Ingles",

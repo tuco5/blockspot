@@ -5,15 +5,16 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/server/supabase/server";
 
-const SignInSchema = z.object({
-  email: z.string().min(1, "required"),
-  password: z.string().min(1, "required"),
+const SignUpSchema = z.object({
+  email: z.string().min(1, "required").email("invalid_email"),
+  password: z.string().min(8, "too_short").max(32, "too_long"),
 });
 
-export async function signin(prevState: AuthFormState, formData: FormData) {
+export async function signup(prevState: AuthFormState, formData: FormData) {
+  console.log(">>> Running action: signup", { formData });
   const supabase = await createClient();
 
-  const validate = SignInSchema.safeParse({
+  const validate = SignUpSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
   });
@@ -25,14 +26,10 @@ export async function signin(prevState: AuthFormState, formData: FormData) {
     };
   }
 
-  const { error } = await supabase.auth.signInWithPassword(validate.data);
+  const { error } = await supabase.auth.signUp(validate.data);
+  console.log(">>> Supabase", { error });
 
-  if (error?.code === "invalid_credentials") {
-    return {
-      ok: false,
-      errors: { password: [error.code ?? ""], email: [error.code ?? ""] },
-    };
-  } else if (error) {
+  if (error) {
     return { ok: false, errors: { password: ["oops"] } };
   }
 

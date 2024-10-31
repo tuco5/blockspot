@@ -21,9 +21,24 @@
     "errors": {
       "invalid_credentials": "Invalid login credentials",
       "required": "Required",
+      "password_mismatch": "Passwords do not match",
       "oops": "Oops, something went wrong"
     },
     "button": "Sign In"
+  },
+  "SignUnPage": {
+    "title": "Sign Up",
+    "description": "Create an account with email and password to continue.",
+    "email": "Email",
+    "password": "Password",
+    "confirm-password": "Confirm Password",
+    "errors": {
+      "too_short": "Too short 8 characters minimum",
+      "too_long": "Too long 32 characters maximum",
+      "required": "Required",
+      "oops": "Oops, something went wrong"
+    },
+    "button": "Iniciar sesión"
   },
   "LocaleSwitcher": {
     "es": "Spanish",
