@@ -41,6 +41,10 @@
     },
     "button": "Registrarme"
   },
+  "ConfirmPage": {
+    "title": "Ya casi estás!",
+    "subtitle": "Revisa tu bandeja de entrada y confirmar tu correo"
+  },
   "LocaleSwitcher": {
     "es": "Español",
     "en": "Ingles",

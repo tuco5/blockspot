@@ -41,6 +41,10 @@
     },
     "button": "Sign up"
   },
+  "ConfirmPage": {
+    "title": "Almost there!",
+    "subtitle": "Check your inbox to confirm your email"
+  },
   "LocaleSwitcher": {
     "es": "Spanish",
     "en": "English",
