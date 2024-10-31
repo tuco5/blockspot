@@ -27,7 +27,8 @@
   },
   "SignUnPage": {
     "title": "Registrate",
-    "description": "Crear cuenta con correo y contraseña para continuar.",
+    "description": "Crear cuenta con correo y contraseña para continuar. Si ya tienes cuenta",
+    "login": "inicia sesión",
     "email": "Correo",
     "password": "Contraseña",
     "confirm-password": "Confirmar contraseña",

@@ -7,7 +7,7 @@ import Form from "next/form";
 import { FadeLoader } from "react-spinners";
 import { signup } from "./actions";
 import { FormInputField } from "@/components/forms";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -16,6 +16,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function SignupPage() {
   const t = useTranslations("SignUnPage");
@@ -42,7 +44,15 @@ export default function SignupPage() {
       <Card className="flex flex-col gap-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-3xl">{t("title")}</CardTitle>
-          <CardDescription>{t("description")}</CardDescription>
+          <CardDescription>
+            <span>{t("description")}&nbsp;</span>
+            <Link
+              href="/auth/sign/in"
+              className={cn(buttonVariants({ variant: "link" }), "px-0")}
+            >
+              {t("login")} &rarr;
+            </Link>
+          </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col">
           <FormInputField
