@@ -1,7 +1,10 @@
+"use client";
 import { cn } from "@/lib/utils";
+import { Eye, EyeOff } from "lucide-react";
 import { Input, type InputProps } from "../ui/input";
 import { ErrorMessages } from "./ErrorMessages";
 import { Label } from "../ui/label";
+import { useState } from "react";
 
 interface FormInputFieldProps extends InputProps {
   label?: string;
@@ -11,33 +14,56 @@ interface FormInputFieldProps extends InputProps {
 export function FormInputField({
   label = "",
   errors = [],
+  type,
   ...props
 }: FormInputFieldProps) {
-  const inputErrorStyle =
-    errors?.length > 0 ? "border-red-500" : "border-stone-300";
-  const labelErrorStyle =
-    errors?.length > 0 ? "text-red-500" : "text-stone-600 dark:text-stone-400";
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => setShowPassword(!showPassword);
+
+  const passwordIcon = showPassword ? (
+    <Eye size={20} className="text-slate-700" />
+  ) : (
+    <EyeOff size={20} className="text-slate-500" />
+  );
+
+  const getInputClass = () =>
+    cn(
+      "peer h-12 w-full rounded-lg border border-stone-300 bg-transparent text-sm text-stone-900 transition-colors focus:border-ring dark:text-white",
+      errors.length > 0 ? "border-destructive" : "border-stone-300",
+    );
+
+  const getLabelClass = () =>
+    cn(
+      "px-2 text-sm transition-all peer-focus:text-ring",
+      errors.length > 0
+        ? "text-destructive"
+        : "text-stone-600 dark:text-stone-400",
+    );
 
   return (
     <div>
-      <div className="mb-1.5 flex flex-col-reverse">
+      <div className="relative mb-1.5 flex flex-col-reverse gap-2">
         <Input
           id={props.name}
-          className={cn(
-            "peer block w-full rounded-lg border border-stone-300 bg-transparent px-2.5 pb-2.5 pt-4 text-sm text-stone-900 transition-colors focus:border-sky-500 focus:outline-none focus:ring-0 dark:text-white",
-            inputErrorStyle,
-          )}
+          type={
+            type === "password" ? (showPassword ? "text" : "password") : type
+          }
+          className={getInputClass()}
           {...props}
         />
-        <Label
-          htmlFor={props.name}
-          className={cn(
-            "px-2 text-sm transition-all peer-focus:text-sky-500",
-            labelErrorStyle,
-          )}
-        >
+        <Label htmlFor={props.name} className={getLabelClass()}>
           {label}
         </Label>
+        {type === "password" && (
+          <button
+            onClick={handleShowPassword}
+            type="button"
+            className="absolute right-4 top-2/3 -translate-y-1/2"
+          >
+            {passwordIcon}
+          </button>
+        )}
       </div>
       <ErrorMessages errors={errors} />
     </div>

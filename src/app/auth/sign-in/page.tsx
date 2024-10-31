@@ -25,8 +25,6 @@ export default function SigninPage() {
 
   const t = useTranslations("SignInPage");
 
-  console.log(loginState.errors?.password);
-
   return (
     <Form action={loginAction} noValidate>
       <Card className="flex flex-col gap-4">
@@ -36,6 +34,7 @@ export default function SigninPage() {
         </CardHeader>
         <CardContent className="flex flex-col gap-6">
           <FormInputField
+            label={t("email")}
             name="email"
             type="email"
             placeholder="jhon.doe@example.com"
@@ -48,7 +47,7 @@ export default function SigninPage() {
             label={t("password")}
             name="password"
             type="password"
-            placeholder="********"
+            placeholder="· · · · · · · ·"
             errors={loginState.errors?.password?.map((err) =>
               t(`errors.${err as SigninError}`),
             )}
@@ -57,7 +56,7 @@ export default function SigninPage() {
         <CardFooter className="flex justify-center">
           {isPending ? (
             <FadeLoader
-              color="orange"
+              color="hsl(var(--primary))"
               height={5}
               width={5}
               margin={0.2}
