@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import Form from "next/form";
 import { FadeLoader } from "react-spinners";
 import { signin } from "./actions";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -16,6 +16,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { FormInputField } from "@/components/forms";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function SigninPage() {
   const [loginState, loginAction, isPending] = useActionState(signin, {
@@ -30,7 +32,15 @@ export default function SigninPage() {
       <Card className="flex flex-col gap-4">
         <CardHeader className="pb-0">
           <CardTitle className="text-3xl">{t("title")}</CardTitle>
-          <CardDescription>{t("description")}</CardDescription>
+          <CardDescription>
+            <span>{t("description")}&nbsp;</span>
+            <Link
+              href="/auth/sign/in"
+              className={cn(buttonVariants({ variant: "link" }), "px-0")}
+            >
+              {t("sign_up")} &rarr;
+            </Link>
+          </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col">
           <FormInputField

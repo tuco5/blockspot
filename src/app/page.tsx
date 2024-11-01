@@ -17,7 +17,7 @@ export default function HomePage() {
 function Hero() {
   const t = useTranslations("HomePage");
   return (
-    <main className="flex h-screen w-full items-center justify-center">
+    <main className="mt-8 flex h-[90vh] w-full justify-center sm:mt-0 sm:items-center">
       <div className="flex h-1/2 flex-col gap-4 p-8">
         <h1 className="flex flex-wrap items-center text-5xl font-semibold tracking-tight">
           <span>{t("hero")}&nbsp;</span>

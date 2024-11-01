@@ -50,7 +50,7 @@ export default function SignupPage() {
               href="/auth/sign/in"
               className={cn(buttonVariants({ variant: "link" }), "px-0")}
             >
-              {t("login")} &rarr;
+              {t("sign_in")} &rarr;
             </Link>
           </CardDescription>
         </CardHeader>
