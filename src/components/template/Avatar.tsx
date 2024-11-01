@@ -48,7 +48,7 @@ export function Avatar({ user }: AvatarProps) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <AvatarRoot className="cursor-pointer">
-          <AvatarImage src={user?.user_metadata?.avatar_url} />
+          <AvatarImage src={user?.user_metadata?.avatar_url as string} />
           <AvatarFallback>{user?.email?.[0]?.toUpperCase()}</AvatarFallback>
         </AvatarRoot>
       </DropdownMenuTrigger>
