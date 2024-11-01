@@ -46,6 +46,13 @@
     "title": "Almost there!",
     "subtitle": "Check your inbox to confirm your email"
   },
+  "AvatarMenu": {
+    "account": "Miy Account",
+    "profile": "My Profile",
+    "settings": "Settings",
+    "logout": "Sign Out",
+    "sign_in": "Log in"
+  },
   "LocaleSwitcher": {
     "es": "Spanish",
     "en": "English",

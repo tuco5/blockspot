@@ -46,6 +46,13 @@
     "title": "¡Ya casi estás!",
     "subtitle": "Revisa tu bandeja de entrada y confirmar tu correo"
   },
+  "AvatarMenu": {
+    "account": "Mi cuenta",
+    "profile": "Mi perfil",
+    "settings": "Configuraciones",
+    "logout": "Cerrar sesión",
+    "sign_in": "Iniciar"
+  },
   "LocaleSwitcher": {
     "es": "Español",
     "en": "Ingles",
