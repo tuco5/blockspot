@@ -1,7 +1,7 @@
 import { createClient } from "@/server/supabase/server";
 import { LocaleSwitcher } from "@/components/locale";
 import { DarkModeToggle } from "@/components/theme/DarkModeToggle";
-import { Logo, Avatar } from "@/components/common";
+import { Avatar, Logo } from ".";
 
 export async function Header() {
   const supabase = await createClient();

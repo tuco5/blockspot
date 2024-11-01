@@ -26,6 +26,7 @@ interface AvatarProps {
 }
 export function Avatar({ user }: AvatarProps) {
   const t = useTranslations("AvatarMenu");
+  const router = useRouter();
 
   if (!user) {
     return (
@@ -36,7 +37,6 @@ export function Avatar({ user }: AvatarProps) {
   }
 
   const supabase = createClient();
-  const router = useRouter();
   const Logout = () => {
     supabase.auth
       .signOut()
