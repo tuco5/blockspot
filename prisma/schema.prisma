@@ -11,11 +11,41 @@ datasource db {
     directUrl = env("DIRECT_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model User {
+    id     String  @id @default(cuid())
+    userId String  @unique
+    name   String
+    email  String?
+    image  String?
+    phone  String?
 
-    @@index([name])
+    organizations Organization[]
+}
+
+model Organization {
+    id       String  @id @default(cuid())
+    userId   String
+    name     String
+    location String
+    image    String?
+
+    users User[] @relation()
+    Spot  Spot[]
+}
+
+model Spot {
+    id    String   @id @default(cuid())
+    name  String
+    image String?
+    type  SpotType
+
+    organization Organization @relation(fields: [id], references: [id])
+}
+
+enum SpotType {
+    CANCHA
+    TERREZA
+    AUDITORIO
+    SALON
+    LABORATORIO
 }
