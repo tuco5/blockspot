@@ -30,7 +30,12 @@ export function Avatar({ user }: AvatarProps) {
 
   if (!user) {
     return (
-      <Button asChild variant="secondary" rounded="full">
+      <Button
+        asChild
+        variant="secondary"
+        rounded="full"
+        className="hidden sm:flex"
+      >
         <Link href="/auth/sign/in">{t("sign_in")}</Link>
       </Button>
     );
