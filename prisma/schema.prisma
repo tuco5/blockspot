@@ -19,7 +19,8 @@ model User {
     image  String?
     phone  String?
 
-    organizations Organization[]
+    ownerOf  Organization[] @relation("owner")
+    memberOf Organization[] @relation("members")
 }
 
 model Organization {
@@ -29,15 +30,17 @@ model Organization {
     location String
     image    String?
 
-    users User[] @relation()
-    Spot  Spot[]
+    owner    User   @relation("owner", fields: [userId], references: [userId])
+    memebers User[] @relation("members")
+    Spot     Spot[]
 }
 
 model Spot {
-    id    String   @id @default(cuid())
+    id    String  @id @default(cuid())
     name  String
     image String?
-    type  SpotType
+
+    type SpotType
 
     organization Organization @relation(fields: [id], references: [id])
 }
