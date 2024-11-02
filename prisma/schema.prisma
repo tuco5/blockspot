@@ -30,7 +30,7 @@ model Organization {
     location String
     image    String?
 
-    owner    User   @relation("owner", fields: [userId], references: [userId])
+    owner    User   @relation("owner", fields: [userId], references: [userId], onDelete: Cascade)
     memebers User[] @relation("members")
     Spot     Spot[]
 }
@@ -42,7 +42,7 @@ model Spot {
 
     type SpotType
 
-    organization Organization @relation(fields: [id], references: [id])
+    organization Organization @relation(fields: [id], references: [id], onDelete: Cascade)
 }
 
 enum SpotType {
