@@ -12,7 +12,7 @@ export default function useBreakPoints(bp: BP): boolean {
     if (bp === "lg") setIsResponsive(width < 1024);
     if (bp === "md") setIsResponsive(width < 768);
     if (bp === "sm") setIsResponsive(width < 640);
-  }, []);
+  }, [width]);
 
   return isResponsive;
 }
