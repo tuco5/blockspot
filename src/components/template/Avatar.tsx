@@ -32,7 +32,7 @@ export function Avatar({ user }: AvatarProps) {
     return (
       <Button
         asChild
-        variant="secondary"
+        variant="primary"
         rounded="full"
         className="hidden sm:flex"
       >
