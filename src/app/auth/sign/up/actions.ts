@@ -33,5 +33,5 @@ export async function signup(prevState: AuthFormState, formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/auth/confirm");
 }
