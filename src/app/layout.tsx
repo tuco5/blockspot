@@ -7,9 +7,14 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 
 export const metadata: Metadata = {
-  title: "Blockspot",
+  title: "blockspot",
   description: "Reserve your favorite spot inside your organization",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  manifest: "/favicon/site.webmanifest",
+  icons: {
+    icon: ["/favicon/favicon-96x96.png", "/favicon/favicon.svg"],
+    shortcut: "/favicon/favicon.ico",
+    apple: "/favicon/apple-touch-icon.png",
+  },
 };
 
 export default async function RootLayout({
