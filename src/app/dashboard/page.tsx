@@ -6,6 +6,7 @@ import { Plus, Search } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import Title from "@/components/template/Typographhy";
 
 /**
  * Mock data
@@ -35,14 +36,14 @@ export default async function DashboardPage() {
 
   return (
     <main className="flex w-full max-w-screen-lg flex-col items-center gap-4 p-2">
-      <h1 className="text-2xl font-bold -tracking-wide">Bienvenido Tudor</h1>
+      <Title>Bienvenido Tudor</Title>
       <SearchGroup className="mt-4" />
 
       <div className="flex w-full items-center justify-center gap-6">
         <h2 className="text-xl font-bold -tracking-wide">Mis Grupos</h2>
 
         <Link
-          href="/groups/new"
+          href="/dashboard/groups/new"
           className={cn(buttonVariants({ variant: "primary" }), "rounded-full")}
         >
           <Plus />
