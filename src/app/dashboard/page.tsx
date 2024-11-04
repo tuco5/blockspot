@@ -17,18 +17,6 @@ const groups: Group[] = [
     location: "Av. Adolfo Lopez Mateos Sur #4506,Zapopan, Jalisco, Mex.",
     img: "/img/mock/mock-1.jpg",
   },
-  /*  {
-    id: "2",
-    name: "El Palomar",
-    location: "location 2",
-    img: "/img/mock/mock-2.jpg",
-  },
-  {
-    id: "3",
-    name: "Bugambilias",
-    location: "location 3",
-    img: "/img/mock/mock-3.jpg",
-  },  */
 ];
 
 const mockFetchGroups = () => groups;
@@ -43,13 +31,7 @@ export default async function DashboardPage() {
   // TODO: get the groups
   const groups = mockFetchGroups();
 
-  // TODO: Add a button to create a new organization
-
   // TODO: If user has no name, ask him to provide
-
-  // TODO: Add search bar to fetch organizations
-
-  // TODO: Add a Plus button to create a new organization
 
   return (
     <main className="flex w-full max-w-screen-lg flex-col items-center gap-4 p-2">
