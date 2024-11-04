@@ -40,11 +40,11 @@ export default async function DashboardPage() {
       <SearchGroup className="mt-4" />
 
       <div className="flex w-full items-center justify-center gap-6">
-        <h2 className="text-xl font-bold -tracking-wide">Mis Grupos</h2>
+        <h2 className="text-2xl font-semibold">Mis Grupos</h2>
 
         <Link
           href="/dashboard/groups/new"
-          className={cn(buttonVariants({ variant: "primary" }), "rounded-full")}
+          className={cn(buttonVariants({ variant: "primary" }))}
         >
           <Plus />
           <span>Crear</span>
