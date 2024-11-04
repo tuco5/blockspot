@@ -1,7 +1,9 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { schema } from "./schema";
 import { redirect } from "next/navigation";
+import { createClient } from "@/server/supabase/server";
+import { db } from "@/server/db";
+import { schema } from "./schema";
 
 export type FormState = {
   message: string;
@@ -11,15 +13,41 @@ export async function createGroup(
   _prevState: FormState,
   formData: FormData,
 ): Promise<FormState> {
-  const data = Object.fromEntries(formData);
+  const supabase = await createClient();
 
-  const validate = schema.safeParse({
+  // AUTH:
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    console.error(">>> Auth error:", { error });
+    redirect("/auth/sign/in");
+  }
+
+  // PARSING DATA:
+  const data = Object.fromEntries(formData);
+  const validated = schema.safeParse({
     ...data,
     isPrivate: data.isPrivate === "on",
   });
 
-  if (!validate.success) return { message: "Invalid data", ok: false };
+  // HANDLING ERRORS:
+  if (!validated.success) {
+    console.error(">>> Invalid data:", { error });
+    return { message: "Invalid data", ok: false };
+  }
 
+  // DB MUTATION:
+  await db.group.create({
+    data: {
+      ...validated.data,
+      userId: user.id,
+    },
+  });
+
+  // REDIRECT:
   revalidatePath("/dashboard", "page");
   redirect("/dashboard");
 }
