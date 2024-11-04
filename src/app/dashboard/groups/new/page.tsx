@@ -1,5 +1,5 @@
 import { Title } from "@/components/template";
-import NewGroupForm from "./_components/NewGroupForm";
+import { NewGroupForm } from "./form";
 
 export default async function NewGroupPage() {
   return (

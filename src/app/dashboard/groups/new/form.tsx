@@ -11,13 +11,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { type FormSchema, schema } from "../schema";
+import { type FormSchema, schema } from "./schema";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
-import { createGroup } from "../actions";
+import { createGroup } from "./actions";
 import { FormSubmitButton } from "@/components/forms";
 
-export default function NewGroupForm() {
+export function NewGroupForm() {
   const [_state, formAction, isPending] = useActionState(createGroup, {
     message: "",
   });
