@@ -12,7 +12,7 @@ datasource db {
 }
 
 model User {
-    id    String  @id @default(cuid()) @db.Uuid
+    id    String  @id @default(uuid()) @db.Uuid
     name  String?
     email String? @unique
     image String?
@@ -23,7 +23,7 @@ model User {
 }
 
 model Group {
-    id        String   @id @default(cuid()) @db.Uuid
+    id        String   @id @default(uuid()) @db.Uuid
     userId    String   @db.Uuid
     name      String
     location  String
@@ -36,7 +36,7 @@ model Group {
 }
 
 model Spot {
-    id    String  @id @default(cuid()) @db.Uuid
+    id    String  @id @default(uuid()) @db.Uuid
     name  String
     image String?
 
