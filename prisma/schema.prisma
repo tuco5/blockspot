@@ -18,16 +18,17 @@ model User {
     image String?
     phone String?
 
-    ownerOf  Organization[] @relation("owner")
-    memberOf Organization[] @relation("members")
+    ownerOf  Group[] @relation("owner")
+    memberOf Group[] @relation("members")
 }
 
-model Organization {
-    id       String  @id @default(cuid()) @db.Uuid
-    userId   String  @db.Uuid
+model Group {
+    id       String   @id @default(cuid()) @db.Uuid
+    userId   String   @db.Uuid
     name     String
     location String
     image    String?
+    public   Boolean? @default(false)
 
     owner    User   @relation("owner", fields: [userId], references: [id], onDelete: Cascade)
     memebers User[] @relation("members")
@@ -41,7 +42,7 @@ model Spot {
 
     type SpotType
 
-    organization Organization @relation(fields: [id], references: [id], onDelete: Cascade)
+    organization Group @relation(fields: [id], references: [id], onDelete: Cascade)
 }
 
 enum SpotType {

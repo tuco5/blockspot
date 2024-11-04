@@ -32,9 +32,9 @@ export function Avatar({ user }: AvatarProps) {
     return (
       <Button
         asChild
-        variant="secondary"
+        variant="primary"
         rounded="full"
-        className="hidden sm:flex"
+        className="hidden h-8 sm:flex"
       >
         <Link href="/auth/sign/in">{t("sign_in")}</Link>
       </Button>
@@ -52,7 +52,7 @@ export function Avatar({ user }: AvatarProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <AvatarRoot className="cursor-pointer">
+        <AvatarRoot className="h-8 w-8 cursor-pointer">
           <AvatarImage src={user?.user_metadata?.avatar_url as string} />
           <AvatarFallback>{user?.email?.[0]?.toUpperCase()}</AvatarFallback>
         </AvatarRoot>
