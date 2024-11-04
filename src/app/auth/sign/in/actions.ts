@@ -38,5 +38,5 @@ export async function signin(prevState: AuthFormState, formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/dashboard");
 }
