@@ -1,13 +1,13 @@
 "use client";
 import { type SignUpError } from "../types";
-
 import { useActionState, useState } from "react";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
 import Form from "next/form";
-import { FadeLoader } from "react-spinners";
+import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 import { signup } from "./actions";
 import { FormInputField, FormSubmitButton } from "@/components/forms";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -16,8 +16,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 export default function SignupPage() {
   const t = useTranslations("SignUnPage");

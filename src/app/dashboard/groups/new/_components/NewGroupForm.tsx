@@ -14,12 +14,11 @@ import {
 import { type FormSchema, schema } from "../schema";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
-import { Button } from "@/components/ui/button";
 import { createGroup } from "../actions";
 import { FormSubmitButton } from "@/components/forms";
 
 export default function NewGroupForm() {
-  const [state, formAction, isPending] = useActionState(createGroup, {
+  const [_state, formAction, isPending] = useActionState(createGroup, {
     message: "",
   });
 
