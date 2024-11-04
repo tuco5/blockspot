@@ -35,7 +35,7 @@ export default function SigninPage() {
           <CardDescription>
             <span>{t("description")}&nbsp;</span>
             <Link
-              href="/auth/sign/in"
+              href="/auth/sign/up"
               className={cn(buttonVariants({ variant: "link" }), "px-0")}
             >
               {t("sign_up")} &rarr;
