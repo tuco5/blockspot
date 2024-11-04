@@ -4,7 +4,7 @@ import NewGroupForm from "./_components/NewGroupForm";
 export default async function NewGroupPage() {
   return (
     <main className="flex w-full max-w-screen-lg flex-col items-center gap-4 p-2">
-      <Title>Crear un nuevo grupo</Title>
+      <Title>Crea un nuevo grupo</Title>
       <NewGroupForm />
     </main>
   );
