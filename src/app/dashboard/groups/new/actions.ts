@@ -1,12 +1,14 @@
 "use server";
+import { revalidatePath } from "next/cache";
 import { schema } from "./schema";
+import { redirect } from "next/navigation";
 
 export type FormState = {
   message: string;
   ok?: boolean;
 };
 export async function createGroup(
-  prevState: FormState,
+  _prevState: FormState,
   formData: FormData,
 ): Promise<FormState> {
   const data = Object.fromEntries(formData);
@@ -18,5 +20,6 @@ export async function createGroup(
 
   if (!validate.success) return { message: "Invalid data", ok: false };
 
-  return { message: "Group created", ok: true };
+  revalidatePath("/dashboard", "page");
+  redirect("/dashboard");
 }

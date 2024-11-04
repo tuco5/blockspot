@@ -16,9 +16,12 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { createGroup } from "../actions";
+import { FormSubmitButton } from "@/components/forms";
 
 export default function NewGroupForm() {
-  const [state, formAction] = useActionState(createGroup, { message: "" });
+  const [state, formAction, isPending] = useActionState(createGroup, {
+    message: "",
+  });
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -29,6 +32,10 @@ export default function NewGroupForm() {
       location: "",
     },
   });
+
+  const onSubmit = () => {
+    formRef.current?.requestSubmit();
+  };
 
   return (
     <Form {...form}>
@@ -87,14 +94,13 @@ export default function NewGroupForm() {
             </FormItem>
           )}
         />
-        <Button
-          type="submit"
-          variant="primary"
-          className="mt-4"
-          onClick={form.handleSubmit(() => formRef.current?.requestSubmit())}
+        <FormSubmitButton
+          isPending={isPending}
+          className="mt-4 self-center"
+          onClick={form.handleSubmit(onSubmit)}
         >
           Submit
-        </Button>
+        </FormSubmitButton>
       </form>
     </Form>
   );
