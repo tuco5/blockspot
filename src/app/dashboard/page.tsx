@@ -1,12 +1,12 @@
 import Form from "next/form";
-import Image from "next/image";
-import { createClient } from "@/server/supabase/server";
-import { Input } from "@/components/ui/input";
-import { Plus, Search } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { Plus, Search } from "lucide-react";
+import { createClient } from "@/server/supabase/server";
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 import { buttonVariants } from "@/components/ui/button";
-import Title from "@/components/template/Typographhy";
+import { Title } from "@/components/template";
 
 /**
  * Mock data
