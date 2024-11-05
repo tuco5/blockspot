@@ -3,8 +3,15 @@ import { PageTemplate, Footer, Header } from "@/components/template";
 import HeroCarousel from "./_components/HeroCarousel";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { createClient } from "@/server/supabase/server";
+import { redirect } from "next/navigation";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const supabase = await createClient();
+  const auth = await supabase.auth.getSession();
+
+  if (auth.data.session) return redirect("/dashboard");
+
   return (
     <PageTemplate>
       <Header />
