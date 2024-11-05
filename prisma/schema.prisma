@@ -12,7 +12,7 @@ datasource db {
 }
 
 model User {
-    id    String  @id @default(cuid()) @db.Uuid
+    id    String  @id @default(uuid()) @db.Uuid
     name  String?
     email String? @unique
     image String?
@@ -23,12 +23,12 @@ model User {
 }
 
 model Group {
-    id       String   @id @default(cuid()) @db.Uuid
-    userId   String   @db.Uuid
-    name     String
-    location String
-    image    String?
-    public   Boolean? @default(false)
+    id        String   @id @default(uuid()) @db.Uuid
+    userId    String   @db.Uuid
+    name      String
+    location  String
+    image     String?
+    isPrivate Boolean? @default(true)
 
     owner    User   @relation("owner", fields: [userId], references: [id], onDelete: Cascade)
     memebers User[] @relation("members")
@@ -36,7 +36,7 @@ model Group {
 }
 
 model Spot {
-    id    String  @id @default(cuid()) @db.Uuid
+    id    String  @id @default(uuid()) @db.Uuid
     name  String
     image String?
 

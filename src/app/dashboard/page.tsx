@@ -1,94 +1,65 @@
 import Form from "next/form";
-import Image from "next/image";
-import { createClient } from "@/server/supabase/server";
-import { Input } from "@/components/ui/input";
-import { Plus, Search } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { ImageIcon, Plus, Search } from "lucide-react";
+import { createClient } from "@/server/supabase/server";
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 import { buttonVariants } from "@/components/ui/button";
-
-/**
- * Mock data
- */
-const groups: Group[] = [
-  {
-    id: "1",
-    name: "Provenza",
-    location: "Av. Adolfo Lopez Mateos Sur #4506,Zapopan, Jalisco, Mex.",
-    img: "/img/mock/mock-1.jpg",
-  },
-  /*  {
-    id: "2",
-    name: "El Palomar",
-    location: "location 2",
-    img: "/img/mock/mock-2.jpg",
-  },
-  {
-    id: "3",
-    name: "Bugambilias",
-    location: "location 3",
-    img: "/img/mock/mock-3.jpg",
-  },  */
-];
-
-const mockFetchGroups = () => groups;
-/**
- * Mock data
- */
+import { Title } from "@/components/template";
+import { db } from "@/server/db";
+import { Group } from "@prisma/client";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
-  const { data: user } = await supabase.auth.getUser();
+  const { data: auth } = await supabase.auth.getUser();
 
-  // TODO: get the groups
-  const groups = mockFetchGroups();
+  const user = await db.user.findUnique({
+    where: { id: auth.user?.id },
+    include: { memberOf: true, ownerOf: true },
+  });
 
-  // TODO: Add a button to create a new organization
+  console.log({ user });
 
   // TODO: If user has no name, ask him to provide
 
-  // TODO: Add search bar to fetch organizations
-
-  // TODO: Add a Plus button to create a new organization
-
   return (
-    <main className="flex w-full max-w-screen-lg flex-col items-center gap-4 p-2">
-      <h1 className="text-2xl font-bold -tracking-wide">Bienvenido Tudor</h1>
-      <SearchGroup className="mt-4" />
+    <main className="flex w-full max-w-screen-lg flex-col items-center gap-8 p-2">
+      <Title className="mt-6">Hola Tudor</Title>
 
-      <div className="flex w-full items-center justify-center gap-6">
-        <h2 className="text-xl font-bold -tracking-wide">Mis Grupos</h2>
-
+      <div className="flex w-full max-w-screen-md justify-between gap-8">
+        <h2 className="text-2xl font-semibold">Mis Grupos</h2>
+        <SearchGroup />
         <Link
-          href="/groups/new"
-          className={cn(buttonVariants({ variant: "primary" }), "rounded-full")}
+          href="/dashboard/groups/new"
+          className={cn(buttonVariants({ variant: "primary" }))}
         >
           <Plus />
           <span>Crear</span>
         </Link>
       </div>
 
-      {groups.length > 0 ? (
-        <GroupsList groups={groups} />
-      ) : (
-        <p className="text-center italic text-slate-500 dark:text-slate-300">
-          Aun no perteneces a ningun grupo...
-        </p>
-      )}
+      <GroupsList
+        groups={user?.ownerOf ?? []}
+        emptyMsg="No has creado ningun grupo aún."
+      />
     </main>
   );
 }
 
-type Group = {
-  id: string;
-  name: string;
-  location: string;
-  img: string;
-};
 interface GroupsListProps {
   groups: Group[];
+  emptyMsg: string;
 }
-function GroupsList({ groups }: GroupsListProps) {
+function GroupsList({ groups, emptyMsg }: GroupsListProps) {
+  if (groups.length === 0) {
+    return (
+      <p className="text-center italic text-slate-500 dark:text-slate-300">
+        {emptyMsg}
+      </p>
+    );
+  }
+
   return (
     <div className="flex w-full flex-wrap items-center justify-center gap-4">
       {groups.map((group) => (
@@ -99,19 +70,31 @@ function GroupsList({ groups }: GroupsListProps) {
 }
 
 type GroupCardProps = Group;
-function GroupCard({ name, img, id }: GroupCardProps) {
+function GroupCard({ name, image, id }: GroupCardProps) {
+  const imgSize = "h-48 w-48";
   return (
     <Link
       href={`/groups/${id}`}
-      className="relative flex h-40 w-40 overflow-hidden rounded-md"
+      className={cn("relative flex overflow-hidden rounded-lg", imgSize)}
     >
-      <Image
-        src={img}
-        alt={name}
-        height={128}
-        width={128}
-        className="absolute inset-0 h-40 w-40 object-cover"
-      />
+      {image ? (
+        <Image
+          src={image}
+          alt={name}
+          height={200}
+          width={200}
+          className={cn("absolute inset-0 object-cover", imgSize)}
+        />
+      ) : (
+        <div
+          className={cn(
+            "absolute inset-0 flex items-center justify-center rounded-lg bg-slate-400/30",
+            imgSize,
+          )}
+        >
+          <ImageIcon className="h-24 w-24 text-slate-500 dark:text-slate-300" />
+        </div>
+      )}
       <div className="z-10 flex h-full w-full flex-col items-center text-white">
         <h3 className="w-full bg-black/60 px-1 py-2 text-center text-lg font-bold">
           {name}
