@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/server/supabase/server";
 import { db } from "@/server/db";
-import { schema } from "./schema";
+import { newGroupSchema } from "./schema";
 
 export type FormState = {
   message: string;
@@ -28,7 +28,7 @@ export async function createGroup(
 
   // PARSING DATA:
   const data = Object.fromEntries(formData);
-  const validated = schema.safeParse({
+  const validated = newGroupSchema.safeParse({
     ...data,
     isPrivate: data.isPrivate === "on",
   });

@@ -11,7 +11,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { type FormSchema, schema } from "./schema";
+import { type NewGroupSchema, newGroupSchema } from "./schema";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { createGroup } from "./actions";
@@ -24,8 +24,8 @@ export function NewGroupForm() {
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  const form = useForm<FormSchema>({
-    resolver: zodResolver(schema),
+  const form = useForm<NewGroupSchema>({
+    resolver: zodResolver(newGroupSchema),
     defaultValues: {
       name: "",
       location: "",
