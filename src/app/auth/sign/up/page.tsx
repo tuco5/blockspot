@@ -1,13 +1,13 @@
 "use client";
 import { type SignUpError } from "../types";
-
 import { useActionState, useState } from "react";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
 import Form from "next/form";
-import { FadeLoader } from "react-spinners";
+import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 import { signup } from "./actions";
-import { FormInputField } from "@/components/forms";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { FormInputField, FormSubmitButton } from "@/components/forms";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -16,8 +16,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 export default function SignupPage() {
   const t = useTranslations("SignUnPage");
@@ -50,7 +48,7 @@ export default function SignupPage() {
               href="/auth/sign/in"
               className={cn(buttonVariants({ variant: "link" }), "px-0")}
             >
-              {t("login")} &rarr;
+              {t("sign_in")} &rarr;
             </Link>
           </CardDescription>
         </CardHeader>
@@ -96,25 +94,9 @@ export default function SignupPage() {
           />
         </CardContent>
         <CardFooter className="flex justify-center">
-          {isPending ? (
-            <FadeLoader
-              color="hsl(var(--primary))"
-              height={5}
-              width={5}
-              margin={0.2}
-              radius={4}
-            />
-          ) : (
-            <Button
-              variant="primary"
-              rounded="full"
-              type="submit"
-              className="px-10 py-[18px] text-xl"
-              disabled={!isPassMatching}
-            >
-              {t("button")}
-            </Button>
-          )}
+          <FormSubmitButton isPending={isPending}>
+            {t("button")}
+          </FormSubmitButton>
         </CardFooter>
       </Card>
     </Form>

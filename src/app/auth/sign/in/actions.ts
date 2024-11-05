@@ -28,6 +28,7 @@ export async function signin(prevState: AuthFormState, formData: FormData) {
   const { error } = await supabase.auth.signInWithPassword(validate.data);
 
   if (error?.code === "invalid_credentials") {
+    console.error(">>> Sign in action error:", { error });
     return {
       ok: false,
       errors: { password: [error.code ?? ""], email: [error.code ?? ""] },
@@ -37,5 +38,5 @@ export async function signin(prevState: AuthFormState, formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/dashboard");
 }
