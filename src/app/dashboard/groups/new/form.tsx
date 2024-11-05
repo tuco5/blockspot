@@ -52,7 +52,6 @@ export function NewGroupForm() {
               <FormControl>
                 <Input placeholder="Nombre de tu organización..." {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
@@ -66,7 +65,6 @@ export function NewGroupForm() {
               <FormControl>
                 <Input placeholder="Lugar de tu organización..." {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
