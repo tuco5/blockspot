@@ -6,7 +6,7 @@ import Form from "next/form";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { signin } from "./actions";
-import { FormInputField, FormSubmitButton } from "@/components/forms";
+import { FormSubmitButton } from "@/components/forms";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -41,7 +41,7 @@ export default function SigninPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col">
-          <FormInputField
+          {/* <FormInputField
             label={t("email")}
             name="email"
             type="email"
@@ -59,7 +59,7 @@ export default function SigninPage() {
             errors={loginState.errors?.password?.map((err) =>
               t(`errors.${err as SignInError}`),
             )}
-          />
+          /> */}
         </CardContent>
         <CardFooter className="flex justify-center">
           <FormSubmitButton isPending={isPending}>
