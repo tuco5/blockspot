@@ -22,11 +22,9 @@ export default async function DashboardPage() {
     include: { memberOf: true, ownerOf: true },
   });
 
-  console.log({ user });
-
   return (
     <main className="flex w-full max-w-screen-lg flex-col items-center gap-8 p-2">
-      <Title className="mt-6">Hola Tudor</Title>
+      <Title className="mt-6">Hola {user?.name}</Title>
 
       <div className="flex w-full max-w-screen-md justify-between gap-8">
         <h2 className="text-2xl font-semibold">Mis Grupos</h2>
