@@ -36,8 +36,6 @@ export default function SignUpPage() {
     message: undefined,
   });
 
-  const formRef = useRef<HTMLFormElement>(null);
-
   const form = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -46,6 +44,8 @@ export default function SignUpPage() {
       password: "",
     },
   });
+
+  const formRef = useRef<HTMLFormElement>(null);
 
   const onSubmit = () => {
     formRef.current?.requestSubmit();

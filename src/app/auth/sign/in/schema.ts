@@ -1,7 +1,6 @@
 import { z } from "zod";
 
-export const signUpSchema = z.object({
-  name: z.string().trim().min(1, "required"),
+export const signInSchema = z.object({
   email: z.string().trim().min(1, "required").email("invalid_email"),
   password: z
     .string()
@@ -10,4 +9,4 @@ export const signUpSchema = z.object({
     .max(32, "too_long"),
 });
 
-export type SignUpSchema = z.infer<typeof signUpSchema>;
+export type SignInSchema = z.infer<typeof signInSchema>;
