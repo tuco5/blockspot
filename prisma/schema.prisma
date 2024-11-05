@@ -20,6 +20,8 @@ model User {
 
     ownerOf  Group[] @relation("owner")
     memberOf Group[] @relation("members")
+
+    @@map("users")
 }
 
 model Group {
@@ -33,6 +35,8 @@ model Group {
     owner    User   @relation("owner", fields: [userId], references: [id], onDelete: Cascade)
     memebers User[] @relation("members")
     Spot     Spot[]
+
+    @@map("groups")
 }
 
 model Spot {
@@ -43,6 +47,8 @@ model Spot {
     type SpotType
 
     organization Group @relation(fields: [id], references: [id], onDelete: Cascade)
+
+    @@map("spots")
 }
 
 enum SpotType {

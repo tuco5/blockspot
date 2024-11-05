@@ -9,23 +9,22 @@ import { buttonVariants } from "@/components/ui/button";
 import { Title } from "@/components/template";
 import { db } from "@/server/db";
 import { Group } from "@prisma/client";
+import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
   const { data: auth } = await supabase.auth.getUser();
 
+  if (!auth.user) redirect("/auth/sign/in");
+
   const user = await db.user.findUnique({
-    where: { id: auth.user?.id },
+    where: { id: auth.user.id },
     include: { memberOf: true, ownerOf: true },
   });
 
-  console.log({ user });
-
-  // TODO: If user has no name, ask him to provide
-
   return (
     <main className="flex w-full max-w-screen-lg flex-col items-center gap-8 p-2">
-      <Title className="mt-6">Hola Tudor</Title>
+      <Title className="mt-6">¡Hola {user?.name}!</Title>
 
       <div className="flex w-full max-w-screen-md justify-between gap-8">
         <h2 className="text-2xl font-semibold">Mis Grupos</h2>

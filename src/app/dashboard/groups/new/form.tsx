@@ -11,21 +11,22 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { type FormSchema, schema } from "./schema";
+import { type NewGroupSchema, newGroupSchema } from "./schema";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { createGroup } from "./actions";
 import { FormSubmitButton } from "@/components/forms";
 
 export function NewGroupForm() {
-  const [_state, formAction, isPending] = useActionState(createGroup, {
-    message: "",
+  const [_, formAction, isPending] = useActionState(createGroup, {
+    ok: undefined,
+    message: undefined,
   });
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  const form = useForm<FormSchema>({
-    resolver: zodResolver(schema),
+  const form = useForm<NewGroupSchema>({
+    resolver: zodResolver(newGroupSchema),
     defaultValues: {
       name: "",
       location: "",
@@ -52,7 +53,6 @@ export function NewGroupForm() {
               <FormControl>
                 <Input placeholder="Nombre de tu organización..." {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
@@ -66,7 +66,6 @@ export function NewGroupForm() {
               <FormControl>
                 <Input placeholder="Lugar de tu organización..." {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}

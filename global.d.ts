@@ -10,7 +10,10 @@ declare global {
   interface PropsWithChildren extends Props {
     children?: React.ReactNode;
   }
-
+  type FormState = {
+    message?: string;
+    ok?: boolean;
+  };
   // i18n
   interface IntlMessages extends Messages {}
 }

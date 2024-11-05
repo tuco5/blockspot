@@ -15,7 +15,7 @@
   "AuthLayout": { "sign-in": "Iniciar sesión", "sign-up": "Registrarse" },
   "SignInPage": {
     "title": "Iniciar sesión",
-    "description": "Ingresa tu correo y contraseña para continuar, sí aún no tienes cuenta",
+    "description": "Ingresa con correo y contraseña, sí aún no tienes cuenta",
     "email": "Correo",
     "password": "Contraseña",
     "sign_up": "Registrate Ahora",
@@ -30,9 +30,10 @@
     "title": "Registrate",
     "description": "Crea tu cuenta para continuar. Si ya tienes cuenta",
     "sign_in": "Inicia Sesión Ahora",
+    "name": "Nombre",
     "email": "Correo",
     "password": "Contraseña",
-    "confirm-password": "Confirmar contraseña",
+    "password_confirm": "Confirmar contraseña",
     "errors": {
       "too_short": "La contraseña debe tener al menos 8 caracteres",
       "too_long": "La contraseña debe tener menos de 32 caracteres",

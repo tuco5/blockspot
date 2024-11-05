@@ -3,12 +3,8 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/server/supabase/server";
 import { db } from "@/server/db";
-import { schema } from "./schema";
+import { newGroupSchema } from "./schema";
 
-export type FormState = {
-  message: string;
-  ok?: boolean;
-};
 export async function createGroup(
   _prevState: FormState,
   formData: FormData,
@@ -28,7 +24,7 @@ export async function createGroup(
 
   // PARSING DATA:
   const data = Object.fromEntries(formData);
-  const validated = schema.safeParse({
+  const validated = newGroupSchema.safeParse({
     ...data,
     isPrivate: data.isPrivate === "on",
   });
@@ -36,7 +32,7 @@ export async function createGroup(
   // HANDLING ERRORS:
   if (!validated.success) {
     console.error(">>> Invalid data:", { error });
-    return { message: "Invalid data", ok: false };
+    return { message: "invalid_data", ok: false };
   }
 
   // DB MUTATION:
