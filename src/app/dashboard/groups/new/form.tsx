@@ -18,8 +18,9 @@ import { createGroup } from "./actions";
 import { FormSubmitButton } from "@/components/forms";
 
 export function NewGroupForm() {
-  const [_state, formAction, isPending] = useActionState(createGroup, {
-    message: "",
+  const [_, formAction, isPending] = useActionState(createGroup, {
+    ok: undefined,
+    message: undefined,
   });
 
   const formRef = useRef<HTMLFormElement>(null);
