@@ -21,7 +21,6 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -32,9 +31,9 @@ import { Input } from "@/components/ui/input";
 export default function SignUpPage() {
   const t = useTranslations("SignUnPage");
 
-  const [loginState, signupAction, isPending] = useActionState(signup, {
-    ok: false,
-    errors: {},
+  const [_, signupAction, isPending] = useActionState(signup, {
+    ok: undefined,
+    message: undefined,
   });
 
   const formRef = useRef<HTMLFormElement>(null);
