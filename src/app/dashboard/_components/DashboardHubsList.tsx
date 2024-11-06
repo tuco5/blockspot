@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SearchForm } from "@/components/forms";
 import { HubsList, type HubsListProps } from "@/components/template";
 import { Hub } from "@prisma/client";

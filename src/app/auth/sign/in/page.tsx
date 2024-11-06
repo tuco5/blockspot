@@ -27,13 +27,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ErrorMessages } from "../../../../components/forms/ErrorMessages";
 
 export default function SigninPage() {
   const t = useTranslations("SignInPage");
 
-  const [_, loginAction, isPending] = useActionState(signin, {
+  const [formState, loginAction, isPending] = useActionState(signin, {
     ok: false,
-    errors: {},
+    error: "",
   });
 
   const form = useForm<SignInSchema>({
@@ -98,7 +99,14 @@ export default function SigninPage() {
               )}
             />
           </CardContent>
-          <CardFooter className="flex justify-center">
+          <CardFooter className="flex flex-col items-center justify-center gap-4">
+            <ErrorMessages
+              error={
+                formState.error
+                  ? t(`errors.${formState.error as SignInError}`)
+                  : ""
+              }
+            />
             <FormSubmitButton
               isPending={isPending}
               onClick={form.handleSubmit(onSubmit)}

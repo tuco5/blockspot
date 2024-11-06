@@ -1,5 +1,4 @@
 "use server";
-import { type AuthFormState } from "../types";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -10,31 +9,31 @@ const SignInSchema = z.object({
   password: z.string().min(1, "required"),
 });
 
-export async function signin(prevState: AuthFormState, formData: FormData) {
-  const supabase = await createClient();
-
-  const validate = SignInSchema.safeParse({
-    email: formData.get("email"),
-    password: formData.get("password"),
-  });
+export async function signin(_: FormState, formData: FormData) {
+  const data = Object.fromEntries(formData);
+  const validate = SignInSchema.safeParse(data);
 
   if (!validate.success) {
+    console.error(">>> Sign in action validation error:", {
+      error: validate.error,
+    });
     return {
       ok: false,
-      errors: validate.error.flatten().fieldErrors,
+      error: "invalid_data",
     };
   }
 
+  const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword(validate.data);
 
   if (error?.code === "invalid_credentials") {
-    console.error(">>> Sign in action error:", { error });
+    console.error(">>> Sign in action supabase error:", { error });
     return {
       ok: false,
-      errors: { password: [error.code ?? ""], email: [error.code ?? ""] },
+      error: "invalid_credentials",
     };
   } else if (error) {
-    return { ok: false, errors: { password: ["oops"] } };
+    return { ok: false, error: "oops" };
   }
 
   revalidatePath("/", "layout");
