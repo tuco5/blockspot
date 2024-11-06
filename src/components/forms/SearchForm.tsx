@@ -8,9 +8,13 @@ import { Button } from "@/components/ui/button";
 import { useRef, useState } from "react";
 
 interface SearchFormProps extends InputProps {
-  onClear: () => void;
+  onClear?: () => void;
 }
-export function SearchForm({ className, onClear, ...props }: SearchFormProps) {
+export function SearchForm({
+  className,
+  onClear = () => {},
+  ...props
+}: SearchFormProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   function handleClear() {
     onClear();
