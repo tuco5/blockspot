@@ -1,11 +1,11 @@
 import { Title } from "@/components/template";
-import { SearchGroup } from "../_components/SearchGroup";
+import { SearchHub } from "../_components/SearchHub";
 
-export default function GroupsPage() {
+export default function HubsPage() {
   return (
     <main className="flex w-full max-w-screen-lg flex-col items-center gap-8 p-2">
       <Title className="mt-6">Explora</Title>
-      <SearchGroup />
+      <SearchHub />
     </main>
   );
 }

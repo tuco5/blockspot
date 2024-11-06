@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRef, useState } from "react";
 
-export function SearchGroup({ className }: Props) {
+export function SearchHub({ className }: Props) {
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
 
@@ -22,7 +22,7 @@ export function SearchGroup({ className }: Props) {
   return (
     <Form
       className={cn("relative w-full max-w-80", className)}
-      action="/dashboard/groups"
+      action="/dashboard/hubs"
     >
       <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
       <Input

@@ -2,14 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Group } from "@prisma/client";
+import { Hub } from "@prisma/client";
 
-interface GroupsListProps {
-  groups: Group[];
+interface HubsListProps {
+  hubs: Hub[];
   emptyMsg: string;
 }
-export function GroupsList({ groups, emptyMsg }: GroupsListProps) {
-  if (groups.length === 0) {
+export function HubsList({ hubs, emptyMsg }: HubsListProps) {
+  if (hubs.length === 0) {
     return (
       <p className="text-center italic text-slate-500 dark:text-slate-300">
         {emptyMsg}
@@ -19,19 +19,19 @@ export function GroupsList({ groups, emptyMsg }: GroupsListProps) {
 
   return (
     <div className="flex w-full flex-wrap items-center justify-center gap-4">
-      {groups.map((group) => (
-        <GroupCard key={group.id} {...group} />
+      {hubs.map((hub) => (
+        <HubCard key={hub.id} {...hub} />
       ))}
     </div>
   );
 }
 
-type GroupCardProps = Group;
-function GroupCard({ name, image, id }: GroupCardProps) {
+type HubCardProps = Hub;
+function HubCard({ name, image, id }: HubCardProps) {
   const imgSize = "h-48 w-48";
   return (
     <Link
-      href={`/groups/${id}`}
+      href={`/hubs/${id}`}
       className={cn("relative flex overflow-hidden rounded-lg", imgSize)}
     >
       {image ? (

@@ -3,10 +3,10 @@ import { MoveRight, Plus } from "lucide-react";
 import { createClient } from "@/server/supabase/server";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { GroupsList } from "@/components/template";
+import { HubsList } from "@/components/template";
 import { db } from "@/server/db";
 import { redirect } from "next/navigation";
-import { SearchGroup } from "./_components/SearchGroup";
+import { SearchHub } from "./_components/SearchHub";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -23,14 +23,14 @@ export default async function DashboardPage() {
     <main className="flex w-full max-w-screen-lg flex-col items-center gap-6 px-2 py-6">
       <div className="flex w-full max-w-screen-md justify-between gap-8">
         <Link
-          href="/dashboard/groups/new"
+          href="/dashboard/hubs/new"
           className={cn(buttonVariants({ variant: "primary", rounded: "md" }))}
         >
           <Plus />
           <span>Hub Nuevo</span>
         </Link>
         <Link
-          href="/dashboard/groups"
+          href="/dashboard/hubs"
           className={cn(
             buttonVariants({ variant: "secondary", rounded: "md" }),
           )}
@@ -40,9 +40,9 @@ export default async function DashboardPage() {
         </Link>
       </div>
 
-      <SearchGroup />
-      <GroupsList
-        groups={user?.ownerOf ?? []}
+      <SearchHub />
+      <HubsList
+        hubs={user?.ownerOf ?? []}
         emptyMsg="No has creado ningun grupo aún."
       />
     </main>
