@@ -39,10 +39,7 @@ export default async function DashboardPage() {
         </Link>
       </div>
 
-      <DashboardHubsList
-        hubs={user?.ownerOf ?? []}
-        emptyMsg="Un 'hub' es un espacio compartido y coordinado, funciona como punto de encuentro para los usuarios y sus actividades. Si aun no eres miembro de un 'hub', crea uno."
-      />
+      <DashboardHubsList hubs={user?.ownerOf ?? []} />
     </main>
   );
 }
