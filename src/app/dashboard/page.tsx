@@ -1,15 +1,14 @@
-import Form from "next/form";
 import Link from "next/link";
 import Image from "next/image";
-import { ImageIcon, Plus, Search } from "lucide-react";
+import { ImageIcon, Plus } from "lucide-react";
 import { createClient } from "@/server/supabase/server";
 import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
 import { buttonVariants } from "@/components/ui/button";
 import { Title } from "@/components/template";
 import { db } from "@/server/db";
 import { Group } from "@prisma/client";
 import { redirect } from "next/navigation";
+import { SearchGroup } from "./_components/SearchGroup";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -100,23 +99,5 @@ function GroupCard({ name, image, id }: GroupCardProps) {
         </h3>
       </div>
     </Link>
-  );
-}
-
-function SearchGroup({ className }: Props) {
-  return (
-    <Form
-      className={cn("relative w-full max-w-80", className)}
-      action="/dashboard/groups"
-    >
-      <Input
-        id="search"
-        name="search"
-        placeholder="Buscar un grupo..."
-        type="search"
-        className="rounded-full bg-card pl-8"
-      />
-      <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
-    </Form>
   );
 }
