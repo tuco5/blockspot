@@ -6,7 +6,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { HubsList } from "@/components/template";
 import { db } from "@/server/db";
 import { redirect } from "next/navigation";
-import { SearchHub } from "./_components/SearchHub";
+import { SearchForm } from "../../components/forms";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -40,7 +40,7 @@ export default async function DashboardPage() {
         </Link>
       </div>
 
-      <SearchHub />
+      <SearchForm />
       <HubsList
         hubs={user?.ownerOf ?? []}
         emptyMsg="No has creado ningun grupo aún."
