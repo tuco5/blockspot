@@ -3,10 +3,9 @@ import { MoveRight, Plus } from "lucide-react";
 import { createClient } from "@/server/supabase/server";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { HubsList } from "@/components/template";
 import { db } from "@/server/db";
 import { redirect } from "next/navigation";
-import { SearchForm } from "../../components/forms";
+import DashboardHubsList from "./_components/DashboardHubsList";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -40,10 +39,9 @@ export default async function DashboardPage() {
         </Link>
       </div>
 
-      <SearchForm />
-      <HubsList
+      <DashboardHubsList
         hubs={user?.ownerOf ?? []}
-        emptyMsg="No has creado ningun grupo aún."
+        emptyMsg="Un 'hub' es un espacio compartido y coordinado, funciona como punto de encuentro para los usuarios y sus actividades. Si aun no eres miembro de un 'hub', crea uno."
       />
     </main>
   );

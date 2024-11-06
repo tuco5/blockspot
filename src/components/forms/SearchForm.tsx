@@ -7,15 +7,13 @@ import { Input, InputProps } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRef, useState } from "react";
 
-export function SearchForm({ className, ...props }: InputProps) {
-  const searchParams = useSearchParams();
-  const search = searchParams.get("search");
-
-  const [searchInput, setSearchInput] = useState(search ?? "");
-
+interface SearchFormProps extends InputProps {
+  onClear: () => void;
+}
+export function SearchForm({ className, onClear, ...props }: SearchFormProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   function handleClear() {
-    setSearchInput("");
+    onClear();
     inputRef.current?.focus();
   }
 
@@ -27,12 +25,10 @@ export function SearchForm({ className, ...props }: InputProps) {
         id="search"
         name="search"
         type="search"
-        value={searchInput}
-        onChange={(e) => setSearchInput(e.target.value)}
         className="rounded-full bg-card pl-8"
         {...props}
       />
-      {searchInput ? (
+      {props.value ? (
         <Button
           variant="ghost"
           className="absolute right-3 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center bg-accent p-0"
@@ -44,4 +40,14 @@ export function SearchForm({ className, ...props }: InputProps) {
       ) : null}
     </Form>
   );
+}
+
+export function SearchFormWithParams({
+  defaultValue,
+  ...props
+}: SearchFormProps) {
+  const searchParams = useSearchParams();
+  const search = searchParams.get("search");
+
+  return <SearchForm defaultValue={search ?? ""} {...props} />;
 }
