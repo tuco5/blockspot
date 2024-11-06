@@ -58,6 +58,7 @@
     "too_short": "La contraseña debe tener al menos 8 caracteres",
     "too_long": "La contraseña debe tener menos de 32 caracteres",
     "required": "Requerido",
+    "invalid_email": "Correo inválido",
     "password_mismatch": "La contraseña no coincide",
     "invalid_credentials": "Credenciales inválidas",
     "invalid_data": "Datos inválidos",

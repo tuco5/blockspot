@@ -58,6 +58,7 @@
     "too_short": "Too short 8 characters minimum",
     "too_long": "Too long 32 characters maximum",
     "required": "Required",
+    "invalid_email": "Invalid email",
     "invalid_credentials": "Invalid login credentials",
     "invalid_data": "Invalid data",
     "password_mismatch": "Passwords do not match",
