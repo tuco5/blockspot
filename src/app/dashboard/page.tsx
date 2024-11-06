@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { MoveRight, Plus } from "lucide-react";
 import { createClient } from "@/server/supabase/server";
 import { cn } from "@/lib/utils";
@@ -8,6 +9,8 @@ import { redirect } from "next/navigation";
 import DashboardHubsList from "./_components/DashboardHubsList";
 
 export default async function DashboardPage() {
+  const t = await getTranslations("DashboardPage");
+
   const supabase = await createClient();
   const { data: auth } = await supabase.auth.getUser();
 
@@ -26,7 +29,7 @@ export default async function DashboardPage() {
           className={cn(buttonVariants({ variant: "primary", rounded: "md" }))}
         >
           <Plus />
-          <span>Hub Nuevo</span>
+          <span>{t("new_hub")}</span>
         </Link>
         <Link
           href="/dashboard/hubs"
@@ -34,7 +37,7 @@ export default async function DashboardPage() {
             buttonVariants({ variant: "secondary", rounded: "md" }),
           )}
         >
-          <span>Unirme a un Hub</span>
+          <span>{t("join_hub")}</span>
           <MoveRight />
         </Link>
       </div>

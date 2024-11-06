@@ -12,6 +12,13 @@
       "laboratorios": "labs"
     }
   },
+  "DashboardPage": {
+    "new_hub": "New Hub",
+    "join_hub": "Join a Hub",
+    "empty_msg": "A 'hub' is a shared space and coordinated place, it functions as a meeting point for users and their activities. If you are not a member of a 'hub', create one.",
+    "not_found_msg": "No results found... Try again.",
+    "search_placeholder": "Filter your 'hubs' by name or location..."
+  },
   "AuthLayout": { "sign-in": "Sign In", "sign-up": "Sign Up" },
   "SignInPage": {
     "title": "Sign in to Blockspot",
