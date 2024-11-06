@@ -4,17 +4,13 @@ import { ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Hub } from "@prisma/client";
 
-interface HubsListProps {
+export interface HubsListProps {
   hubs: Hub[];
-  emptyMsg: string;
+  emptyMsg?: string;
 }
 export function HubsList({ hubs, emptyMsg }: HubsListProps) {
   if (hubs.length === 0) {
-    return (
-      <p className="text-center italic text-slate-500 dark:text-slate-300">
-        {emptyMsg}
-      </p>
-    );
+    return <EmptyHubList emptyMsg={emptyMsg} />;
   }
 
   return (
@@ -58,5 +54,13 @@ function HubCard({ name, image, id }: HubCardProps) {
         </h3>
       </div>
     </Link>
+  );
+}
+
+function EmptyHubList({ emptyMsg }: { emptyMsg?: string }) {
+  return (
+    <div className="flex h-[20vh] w-full flex-col items-center justify-center">
+      <p className="text-center italic text-muted-foreground">{emptyMsg}</p>
+    </div>
   );
 }
