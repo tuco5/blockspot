@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Hub } from "@prisma/client";
+import { type Hub } from "@prisma/client";
 
 export interface HubsListProps {
   hubs: Hub[];

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signUpSchema, SignUpSchema } from "./schema";
+import { signUpSchema, type SignUpSchema } from "./schema";
 import { signup } from "./actions";
 import { cn } from "@/lib/utils";
 import {

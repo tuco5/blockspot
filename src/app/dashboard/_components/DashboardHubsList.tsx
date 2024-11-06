@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { SearchForm } from "@/components/forms";
 import { HubsList, type HubsListProps } from "@/components/template";
-import { Hub } from "@prisma/client";
+import { type Hub } from "@prisma/client";
 
 export default function DashboardHubsList({ hubs, ...props }: HubsListProps) {
   const t = useTranslations("DashboardPage");

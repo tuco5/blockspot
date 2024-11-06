@@ -3,21 +3,17 @@ import Form from "next/form";
 import { useSearchParams } from "next/navigation";
 import { Search, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Input, InputProps } from "@/components/ui/input";
+import { Input, type InputProps } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 interface SearchFormProps extends InputProps {
   onClear?: () => void;
 }
-export function SearchForm({
-  className,
-  onClear = () => {},
-  ...props
-}: SearchFormProps) {
+export function SearchForm({ className, onClear, ...props }: SearchFormProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   function handleClear() {
-    onClear();
+    if (onClear) onClear();
     inputRef.current?.focus();
   }
 
