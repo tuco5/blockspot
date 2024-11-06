@@ -1,5 +1,5 @@
 interface ErrorMessagesProps {
-  error: string;
+  error?: string;
 }
 
 export function ErrorMessages({ error }: ErrorMessagesProps) {

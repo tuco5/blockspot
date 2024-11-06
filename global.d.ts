@@ -14,6 +14,8 @@ declare global {
     message?: string;
     ok?: boolean;
   };
+
   // i18n
   interface IntlMessages extends Messages {}
+  export type ErrorKey = keyof IntlMessages["Errors"];
 }

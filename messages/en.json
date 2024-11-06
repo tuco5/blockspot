@@ -26,12 +26,6 @@
     "email": "Email",
     "password": "Password",
     "sign_up": "Sign Up Now",
-    "errors": {
-      "invalid_credentials": "Invalid login credentials",
-      "required": "Required",
-      "password_mismatch": "Passwords do not match",
-      "oops": "Oops, something went wrong"
-    },
     "button": "Sign in"
   },
   "SignUnPage": {
@@ -42,12 +36,6 @@
     "email": "Email",
     "password": "Password",
     "password_confirm": "Confirm Password",
-    "errors": {
-      "too_short": "Too short 8 characters minimum",
-      "too_long": "Too long 32 characters maximum",
-      "required": "Required",
-      "oops": "Oops, something went wrong"
-    },
     "button": "Sign up"
   },
   "ConfirmPage": {
@@ -65,5 +53,14 @@
     "es": "Spanish",
     "en": "English",
     "label": "Language"
+  },
+  "Errors": {
+    "too_short": "Too short 8 characters minimum",
+    "too_long": "Too long 32 characters maximum",
+    "required": "Required",
+    "invalid_credentials": "Invalid login credentials",
+    "invalid_data": "Invalid data",
+    "password_mismatch": "Passwords do not match",
+    "oops": "Oops, something went wrong"
   }
 }
