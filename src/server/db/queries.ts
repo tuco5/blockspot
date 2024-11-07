@@ -1,5 +1,3 @@
-import "server-only";
-import { redirect } from "next/navigation";
 import { createClient } from "../supabase/server";
 import { db } from ".";
 
@@ -19,4 +17,37 @@ export async function getMyHubs() {
   });
 
   return hubs;
+}
+
+export interface getInfiniteHubsParams {
+  search?: string;
+  take?: number;
+  cursor?: string;
+}
+export async function getInfiniteHubs({
+  search,
+  take = 20,
+  cursor,
+}: getInfiniteHubsParams) {
+  console.log({ search, take, cursor });
+
+  const hubs = await db.hub.findMany({
+    take,
+    skip: cursor !== "" ? 1 : 0,
+    cursor: cursor ? { id: cursor } : undefined,
+    where: {
+      OR: [
+        { name: { contains: search, mode: "insensitive" } },
+        { location: { contains: search, mode: "insensitive" } },
+        {
+          owner: {
+            name: { contains: search, mode: "insensitive" },
+          },
+        },
+      ],
+    },
+  });
+  const nextCursor = hubs[hubs.length - 1]?.id;
+
+  return { hubs, nextCursor };
 }
