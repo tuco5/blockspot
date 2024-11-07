@@ -19,6 +19,10 @@
     "not_found_msg": "No encontramos resultados... Intenta de nuevo.",
     "search_placeholder": "Filtra tus 'hubs' por nombre o lugar..."
   },
+  "HubsPage": {
+    "title": "Busca Hubs publicos",
+    "search_placeholder": "Busca por nombre, lugar o dueño..."
+  },
   "AuthLayout": { "sign-in": "Iniciar sesión", "sign-up": "Registrarse" },
   "SignInPage": {
     "title": "Iniciar sesión",

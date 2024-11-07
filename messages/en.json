@@ -19,6 +19,10 @@
     "not_found_msg": "No results found... Try again.",
     "search_placeholder": "Filter your 'hubs' by name or location..."
   },
+  "HubsPage": {
+    "title": "Explore public hubs",
+    "search_placeholder": "Search by name, location or owner..."
+  },
   "AuthLayout": { "sign-in": "Sign In", "sign-up": "Sign Up" },
   "SignInPage": {
     "title": "Sign in to Blockspot",
