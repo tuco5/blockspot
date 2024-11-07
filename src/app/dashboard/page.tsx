@@ -1,24 +1,15 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { MoveRight, Plus } from "lucide-react";
-import { createClient } from "@/server/supabase/server";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { db } from "@/server/db";
-import { redirect } from "next/navigation";
+import { getMyHubs } from "@/server/db";
 import DashboardHubsList from "./_components/DashboardHubsList";
 
 export default async function DashboardPage() {
   const t = await getTranslations("DashboardPage");
 
-  const supabase = await createClient();
-  const { data: auth } = await supabase.auth.getUser();
-  if (!auth.user) redirect("/auth/sign/in");
-
-  const user = await db.user.findUnique({
-    where: { id: auth.user.id },
-    include: { memberOf: true, ownerOf: true },
-  });
+  const myHubs = await getMyHubs();
 
   return (
     <main className="flex w-full max-w-screen-lg flex-col items-center gap-6 px-2 py-6">
@@ -41,7 +32,7 @@ export default async function DashboardPage() {
         </Link>
       </div>
 
-      <DashboardHubsList hubs={user?.ownerOf ?? []} />
+      <DashboardHubsList hubs={myHubs} />
     </main>
   );
 }
