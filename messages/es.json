@@ -55,8 +55,8 @@
     "label": "Idioma"
   },
   "Errors": {
-    "too_short": "La contraseña debe tener al menos 8 caracteres",
-    "too_long": "La contraseña debe tener menos de 32 caracteres",
+    "too_short": "Muy corto",
+    "too_long": "Muy largo",
     "required": "Requerido",
     "invalid_email": "Correo inválido",
     "password_mismatch": "La contraseña no coincide",
