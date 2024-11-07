@@ -9,8 +9,16 @@ import { useRef } from "react";
 
 interface SearchFormProps extends InputProps {
   onClear?: () => void;
+  action?: NonNullable<
+    string | ((formData: FormData) => void | Promise<void>) | undefined
+  >;
 }
-export function SearchForm({ className, onClear, ...props }: SearchFormProps) {
+export function SearchForm({
+  className,
+  onClear,
+  action = "",
+  ...props
+}: SearchFormProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   function handleClear() {
     if (onClear) onClear();
@@ -18,7 +26,7 @@ export function SearchForm({ className, onClear, ...props }: SearchFormProps) {
   }
 
   return (
-    <Form className={cn("relative w-full max-w-80", className)} action="">
+    <Form className={cn("relative w-full max-w-80", className)} action={action}>
       <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
       <Input
         ref={inputRef}
