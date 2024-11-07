@@ -14,7 +14,7 @@ export function HubsList({ hubs, emptyMsg }: HubsListProps) {
   }
 
   return (
-    <div className="flex w-full flex-wrap items-center justify-center gap-4">
+    <div className="flex w-full flex-wrap items-center justify-center gap-8">
       {hubs.map((hub) => (
         <HubCard key={hub.id} {...hub} />
       ))}
