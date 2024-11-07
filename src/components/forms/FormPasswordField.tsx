@@ -3,7 +3,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { Input, type InputProps } from "../ui/input";
 import { useState } from "react";
 
-export function FormPasswordField({ type, ...props }: InputProps) {
+export function FormPasswordField(props: InputProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const Icon = showPassword ? Eye : EyeOff;

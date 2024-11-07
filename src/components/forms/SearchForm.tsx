@@ -49,5 +49,5 @@ export function SearchFormWithParams({
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
 
-  return <SearchForm defaultValue={search ?? ""} {...props} />;
+  return <SearchForm defaultValue={search ?? defaultValue} {...props} />;
 }
