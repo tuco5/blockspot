@@ -151,8 +151,7 @@ const FormMessage = React.forwardRef<
   const t = useTranslations("Errors");
 
   const { error, formMessageId } = useFormField();
-  const body =
-    error && error?.message ? t(error.message as ErrorKey) : children;
+  const body = error?.message ? t(error.message as ErrorKey) : children;
 
   if (!body) {
     return null;
