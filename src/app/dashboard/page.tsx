@@ -13,7 +13,6 @@ export default async function DashboardPage() {
 
   const supabase = await createClient();
   const { data: auth } = await supabase.auth.getUser();
-
   if (!auth.user) redirect("/auth/sign/in");
 
   const user = await db.user.findUnique({
