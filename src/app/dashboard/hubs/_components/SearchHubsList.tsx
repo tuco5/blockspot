@@ -32,7 +32,7 @@ export function SearchHubsList() {
 
   useEffect(() => {
     if (inView && hasNextPage) {
-      fetchNextPage().finally();
+      void fetchNextPage();
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
