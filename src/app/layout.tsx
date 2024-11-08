@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 import { Providers } from "./providers";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const metadata: Metadata = {
   title: "blockspot",
@@ -32,7 +33,10 @@ export default async function RootLayout({
     >
       <body>
         <NextIntlClientProvider messages={messages}>
-          <Providers>{children}</Providers>
+          <Providers>
+            {children}
+            <ReactQueryDevtools initialIsOpen={false} />
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>
