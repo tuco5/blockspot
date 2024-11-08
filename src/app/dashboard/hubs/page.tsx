@@ -18,9 +18,11 @@ export default async function HubsPage(props: {
   const { search, take } = await getQueryParams(props.searchParams);
 
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery({
+  await queryClient.prefetchInfiniteQuery({
     queryKey: ["hubs", { search, take }],
-    queryFn: () => getHubsAction({ search, take }),
+    queryFn: ({ pageParam }) =>
+      getHubsAction({ search, take, cursor: pageParam }),
+    initialPageParam: "",
   });
 
   return (

@@ -17,7 +17,6 @@ export function SearchHubsList() {
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-    isLoading,
     isError,
     error,
   } = useInfiniteQuery({
