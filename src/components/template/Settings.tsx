@@ -8,8 +8,13 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 import { Settings } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { DarkModeToggle } from "../theme/DarkModeToggle";
+import { LocaleSwitcher } from "../locale";
+import { Separator } from "../ui/separator";
 
 export function SettingsBtn() {
+  const t = useTranslations("Settings");
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -19,11 +24,13 @@ export function SettingsBtn() {
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Are you absolutely sure?</SheetTitle>
-          <SheetDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </SheetDescription>
+          <SheetTitle>{t("title")}</SheetTitle>
+          <SheetDescription>{t("description")}</SheetDescription>
+          <Separator className="my-4" />
+          <div className="flex justify-center gap-4 p-2 sm:justify-start">
+            <DarkModeToggle />
+            <LocaleSwitcher />
+          </div>
         </SheetHeader>
       </SheetContent>
     </Sheet>

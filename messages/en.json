@@ -47,6 +47,10 @@
     "title": "Almost there!",
     "subtitle": "Check your inbox to confirm your email"
   },
+  "Settings": {
+    "title": "Settings",
+    "description": "Settings for your account"
+  },
   "Notifications": {
     "title": "Notifications",
     "description": "Check your inbox.",
