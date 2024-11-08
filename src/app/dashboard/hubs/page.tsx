@@ -1,5 +1,4 @@
 import { Title } from "@/components/template";
-import { SearchForm } from "@/components/forms/SearchForm";
 import { getTranslations } from "next-intl/server";
 import { SearchHubsList } from "./_components/SearchHubsList";
 import {
@@ -28,7 +27,7 @@ export default async function HubsPage(props: {
   return (
     <main className="flex min-h-screen w-full max-w-screen-lg flex-col items-center gap-8 p-2">
       <Title className="mt-6">{t("title")}</Title>
-      <SearchForm placeholder={t("search_placeholder")} defaultValue={search} />
+
       <HydrationBoundary state={dehydrate(queryClient)}>
         <SearchHubsList />
       </HydrationBoundary>
