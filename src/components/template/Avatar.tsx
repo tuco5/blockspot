@@ -79,3 +79,11 @@ export function Avatar({ user }: AvatarProps) {
     </DropdownMenu>
   );
 }
+
+interface SettingsSheetProps extends Children {
+  asChild?: boolean;
+}
+export function SettingsSheet({
+  children,
+  asChild = false,
+}: SettingsSheetProps) {}
