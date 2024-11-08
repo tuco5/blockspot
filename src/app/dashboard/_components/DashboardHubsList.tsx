@@ -29,7 +29,13 @@ export default function DashboardHubsList({ hubs, ...props }: HubsListProps) {
       <HubsList
         hubs={filteredHubs}
         {...props}
-        emptyMsg={filteredHubs.length === 0 ? notFoundMsg : emptyMsg}
+        emptyMsg={
+          hubs.length === 0
+            ? emptyMsg
+            : filteredHubs.length === 0
+              ? notFoundMsg
+              : undefined
+        }
       />
     </div>
   );
