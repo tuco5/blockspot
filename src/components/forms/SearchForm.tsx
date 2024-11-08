@@ -49,13 +49,3 @@ export function SearchForm({
     </Form>
   );
 }
-
-export function SearchFormWithParams({
-  defaultValue,
-  ...props
-}: SearchFormProps) {
-  const searchParams = useSearchParams();
-  const search = searchParams.get("search");
-
-  return <SearchForm defaultValue={search ?? defaultValue} {...props} />;
-}
