@@ -15,7 +15,7 @@
   },
   "DashboardPage": {
     "new_hub": "Hub Nuevo",
-    "join_hub": "Unirme a un Hub",
+    "join_hub": "Unirme",
     "empty_msg": "Un 'hub' es un espacio compartido y coordinado, funciona como punto de encuentro para los usuarios y sus actividades. Si aun no eres miembro de un 'hub', crea uno.",
     "not_found_msg": "No encontramos resultados... Intenta de nuevo.",
     "search_placeholder": "Filtra tus 'hubs' por nombre o lugar..."
