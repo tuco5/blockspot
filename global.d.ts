@@ -7,9 +7,10 @@ declare global {
   interface Props {
     className?: string;
   }
-  interface PropsWithChildren extends Props {
-    children?: React.ReactNode;
+  interface Children {
+    children: React.ReactNode;
   }
+  type PropsWithChildren = Props & Children;
 
   // form
   type FormState = {
