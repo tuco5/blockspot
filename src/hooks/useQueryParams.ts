@@ -1,9 +1,6 @@
+"use client";
 import { useSearchParams } from "next/navigation";
 
-type QueryParams = {
-  search?: string;
-  take?: number;
-};
 export function useQueryParams(): QueryParams {
   const queryParams: QueryParams = { take: 20, search: "" };
   const searchParams = useSearchParams();
