@@ -29,7 +29,7 @@ export default function Notifications() {
         </DrawerHeader>
 
         <div className="flex min-h-[10vh] w-full flex-col items-center justify-center">
-          <p>{t("empty")}</p>
+          <p className="italic text-muted-foreground">{t("empty")}</p>
         </div>
 
         <DrawerFooter className="flex flex-col items-center">
