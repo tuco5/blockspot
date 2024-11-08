@@ -54,9 +54,8 @@
     "close": "Close"
   },
   "AvatarMenu": {
-    "account": "Miy Account",
+    "account": "My Account",
     "profile": "My Profile",
-    "settings": "Settings",
     "logout": "Sign Out"
   },
   "LocaleSwitcher": {

@@ -13,7 +13,7 @@ import {
 import { Button } from "../ui/button";
 import { useTranslations } from "next-intl";
 
-export default function Notifications() {
+export function NotificationsBtn() {
   const t = useTranslations("Notifications");
   return (
     <Drawer>
