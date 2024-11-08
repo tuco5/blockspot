@@ -4,6 +4,7 @@
     "subtitulo": "Tu solución definitiva para la gestión de espacios compartidos",
     "cta": "Empezar",
     "precios": "Precios",
+    "sign_in": "Iniciar",
     "espacios": {
       "canchas": "canchas",
       "terrazas": "terrazas",
@@ -46,12 +47,17 @@
     "title": "¡Ya casi estás!",
     "subtitle": "Revisa tu bandeja de entrada y confirmar tu correo"
   },
+  "Notifications": {
+    "title": "Notificaciones",
+    "description": "Checa tu bandeja de entrada.",
+    "empty": "No tienes notificaciones nuevas.",
+    "close": "Cerrar"
+  },
   "AvatarMenu": {
     "account": "Mi cuenta",
     "profile": "Mi perfil",
     "settings": "Configuraciones",
-    "logout": "Cerrar sesión",
-    "sign_in": "Iniciar"
+    "logout": "Cerrar sesión"
   },
   "LocaleSwitcher": {
     "es": "Español",

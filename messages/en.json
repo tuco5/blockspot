@@ -4,6 +4,7 @@
     "subtitulo": "Your definitive solution for managing shared spaces",
     "cta": "Get started",
     "precios": "Pricing",
+    "sign_in": "Log in",
     "espacios": {
       "canchas": "tennis court",
       "terrazas": "terrace",
@@ -46,12 +47,17 @@
     "title": "Almost there!",
     "subtitle": "Check your inbox to confirm your email"
   },
+  "Notifications": {
+    "title": "Notifications",
+    "description": "Check your inbox.",
+    "empty": "Nothing new to show here.",
+    "close": "Close"
+  },
   "AvatarMenu": {
     "account": "Miy Account",
     "profile": "My Profile",
     "settings": "Settings",
-    "logout": "Sign Out",
-    "sign_in": "Log in"
+    "logout": "Sign Out"
   },
   "LocaleSwitcher": {
     "es": "Spanish",
