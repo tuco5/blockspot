@@ -1,3 +1,4 @@
+import "server-only";
 import { createClient } from "../supabase/server";
 import { db } from ".";
 
@@ -19,9 +20,7 @@ export async function getMyHubs() {
   return hubs;
 }
 
-export interface getInfiniteHubsParams {
-  search?: string;
-  take?: number;
+export interface getInfiniteHubsParams extends QueryParams {
   cursor?: string;
 }
 export async function getInfiniteHubs({
@@ -29,8 +28,6 @@ export async function getInfiniteHubs({
   take = 20,
   cursor,
 }: getInfiniteHubsParams) {
-  console.log({ search, take, cursor });
-
   const hubs = await db.hub.findMany({
     take,
     skip: cursor !== "" ? 1 : 0,
