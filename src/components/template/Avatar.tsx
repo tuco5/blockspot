@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { createClient } from "@/server/supabase/client";
 import { type User } from "@supabase/supabase-js";
-import { LogOut, Settings, User as UserIcon } from "lucide-react";
+import { LogOut, User as UserIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
@@ -49,10 +49,6 @@ export function Avatar({ user }: AvatarProps) {
           <DropdownMenuItem>
             <UserIcon />
             <span>{t("profile")}</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Settings />
-            <span>{t("settings")}</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

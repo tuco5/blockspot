@@ -47,6 +47,10 @@
     "title": "Almost there!",
     "subtitle": "Check your inbox to confirm your email"
   },
+  "Settings": {
+    "title": "Settings",
+    "description": "Settings for your account"
+  },
   "Notifications": {
     "title": "Notifications",
     "description": "Check your inbox.",
@@ -54,9 +58,8 @@
     "close": "Close"
   },
   "AvatarMenu": {
-    "account": "Miy Account",
+    "account": "My Account",
     "profile": "My Profile",
-    "settings": "Settings",
     "logout": "Sign Out"
   },
   "LocaleSwitcher": {

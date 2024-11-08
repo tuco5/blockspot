@@ -6,7 +6,8 @@ import { Avatar, Logo } from ".";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import Notifications from "../messages/Notifications";
+import { NotificationsBtn } from "../messages/Notifications";
+import { SettingsBtn } from "./Settings";
 
 function HeaderContainer({ children }: Children) {
   return (
@@ -37,8 +38,9 @@ export async function Header() {
 
 function HeaderContentWithUser({ user }: { user: User }) {
   return (
-    <div className="flex items-center gap-4">
-      <Notifications />
+    <div className="flex items-center gap-2">
+      <NotificationsBtn />
+      <SettingsBtn />
       <div className="mr-2 border-l pl-4">
         <Avatar user={user} />
       </div>

@@ -47,6 +47,10 @@
     "title": "¡Ya casi estás!",
     "subtitle": "Revisa tu bandeja de entrada y confirmar tu correo"
   },
+  "Settings": {
+    "title": "Configuraciones",
+    "description": "Configuraciones de tu cuenta"
+  },
   "Notifications": {
     "title": "Notificaciones",
     "description": "Checa tu bandeja de entrada.",
@@ -56,7 +60,6 @@
   "AvatarMenu": {
     "account": "Mi cuenta",
     "profile": "Mi perfil",
-    "settings": "Configuraciones",
     "logout": "Cerrar sesión"
   },
   "LocaleSwitcher": {
