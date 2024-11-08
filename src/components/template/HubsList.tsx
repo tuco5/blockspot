@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ImageIcon } from "lucide-react";
+import { GridLoader } from "react-spinners";
 import { cn } from "@/lib/utils";
 import { type Hub } from "@prisma/client";
 
@@ -61,6 +62,14 @@ function EmptyHubList({ emptyMsg }: { emptyMsg?: string }) {
   return (
     <div className="flex h-[20vh] w-full flex-col items-center justify-center">
       <p className="text-center italic text-muted-foreground">{emptyMsg}</p>
+    </div>
+  );
+}
+
+export function HubsListLoader() {
+  return (
+    <div className="flex h-[40vh] w-full flex-col items-center justify-center">
+      <GridLoader size={15} color="hsl(var(--primary))" margin={20} />
     </div>
   );
 }
