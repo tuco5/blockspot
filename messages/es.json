@@ -12,6 +12,17 @@
       "laboratorios": "laboratorios"
     }
   },
+  "DashboardPage": {
+    "new_hub": "Hub Nuevo",
+    "join_hub": "Unirme a un Hub",
+    "empty_msg": "Un 'hub' es un espacio compartido y coordinado, funciona como punto de encuentro para los usuarios y sus actividades. Si aun no eres miembro de un 'hub', crea uno.",
+    "not_found_msg": "No encontramos resultados... Intenta de nuevo.",
+    "search_placeholder": "Filtra tus 'hubs' por nombre o lugar..."
+  },
+  "HubsPage": {
+    "title": "Busca Hubs publicos",
+    "search_placeholder": "Busca por nombre, lugar o dueño..."
+  },
   "AuthLayout": { "sign-in": "Iniciar sesión", "sign-up": "Registrarse" },
   "SignInPage": {
     "title": "Iniciar sesión",
@@ -19,11 +30,6 @@
     "email": "Correo",
     "password": "Contraseña",
     "sign_up": "Registrate Ahora",
-    "errors": {
-      "invalid_credentials": "Credenciales inválidas",
-      "required": "Requerido",
-      "oops": "Ocurrio un error inesperado"
-    },
     "button": "Iniciar sesión"
   },
   "SignUnPage": {
@@ -34,13 +40,6 @@
     "email": "Correo",
     "password": "Contraseña",
     "password_confirm": "Confirmar contraseña",
-    "errors": {
-      "too_short": "La contraseña debe tener al menos 8 caracteres",
-      "too_long": "La contraseña debe tener menos de 32 caracteres",
-      "required": "Requerido",
-      "password_mismatch": "La contraseña no coincide",
-      "oops": "Ocurrio un error inesperado"
-    },
     "button": "Registrarme"
   },
   "ConfirmPage": {
@@ -58,5 +57,15 @@
     "es": "Español",
     "en": "Ingles",
     "label": "Idioma"
+  },
+  "Errors": {
+    "too_short": "Muy corto",
+    "too_long": "Muy largo",
+    "required": "Requerido",
+    "invalid_email": "Correo inválido",
+    "password_mismatch": "La contraseña no coincide",
+    "invalid_credentials": "Credenciales inválidas",
+    "invalid_data": "Datos inválidos",
+    "oops": "Ocurrio un error inesperado"
   }
 }

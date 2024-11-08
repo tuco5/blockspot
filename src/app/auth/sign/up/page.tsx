@@ -1,14 +1,17 @@
 "use client";
-import { type SignUpError } from "../types";
 import { useActionState, useRef } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signUpSchema, SignUpSchema } from "./schema";
+import { signUpSchema, type SignUpSchema } from "./schema";
 import { signup } from "./actions";
 import { cn } from "@/lib/utils";
-import { FormPasswordField, FormSubmitButton } from "@/components/forms";
+import {
+  ErrorMessages,
+  FormPasswordField,
+  FormSubmitButton,
+} from "@/components/forms";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -31,7 +34,7 @@ import { Input } from "@/components/ui/input";
 export default function SignUpPage() {
   const t = useTranslations("SignUnPage");
 
-  const [_, signupAction, isPending] = useActionState(signup, {
+  const [formState, signupAction, isPending] = useActionState(signup, {
     ok: undefined,
     message: undefined,
   });
@@ -113,7 +116,8 @@ export default function SignUpPage() {
               )}
             />
           </CardContent>
-          <CardFooter className="flex justify-center">
+          <CardFooter className="flex flex-col items-center justify-center gap-4">
+            <ErrorMessages error={formState.message} />
             <FormSubmitButton
               isPending={isPending}
               onClick={form.handleSubmit(onSubmit)}

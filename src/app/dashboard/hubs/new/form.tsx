@@ -11,22 +11,22 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { type NewGroupSchema, newGroupSchema } from "./schema";
+import { type NewHubSchema, newHubSchema } from "./schema";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
-import { createGroup } from "./actions";
+import { createHub } from "./actions";
 import { FormSubmitButton } from "@/components/forms";
 
-export function NewGroupForm() {
-  const [_, formAction, isPending] = useActionState(createGroup, {
+export function NewHubForm() {
+  const [_, formAction, isPending] = useActionState(createHub, {
     ok: undefined,
     message: undefined,
   });
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  const form = useForm<NewGroupSchema>({
-    resolver: zodResolver(newGroupSchema),
+  const form = useForm<NewHubSchema>({
+    resolver: zodResolver(newHubSchema),
     defaultValues: {
       name: "",
       location: "",

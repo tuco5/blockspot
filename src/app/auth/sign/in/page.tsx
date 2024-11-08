@@ -1,5 +1,4 @@
 "use client";
-import { type SignInError } from "../types";
 import { useActionState, useRef } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -7,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import { signInSchema, type SignInSchema } from "./schema";
 import { signin } from "./actions";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ErrorMessages } from "@/components/forms/ErrorMessages";
 import { FormPasswordField, FormSubmitButton } from "@/components/forms";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,14 +27,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function SigninPage() {
   const t = useTranslations("SignInPage");
 
-  const [_, loginAction, isPending] = useActionState(signin, {
+  const [formState, loginAction, isPending] = useActionState(signin, {
     ok: false,
-    errors: {},
+    message: "",
   });
 
   const form = useForm<SignInSchema>({
@@ -98,7 +98,8 @@ export default function SigninPage() {
               )}
             />
           </CardContent>
-          <CardFooter className="flex justify-center">
+          <CardFooter className="flex flex-col items-center justify-center gap-4">
+            <ErrorMessages error={formState.message} />
             <FormSubmitButton
               isPending={isPending}
               onClick={form.handleSubmit(onSubmit)}

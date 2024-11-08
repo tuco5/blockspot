@@ -1,7 +1,7 @@
 "use server";
-import { type AuthFormState } from "../types";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 import { createClient } from "@/server/supabase/server";
 
@@ -10,31 +10,36 @@ const SignInSchema = z.object({
   password: z.string().min(1, "required"),
 });
 
-export async function signin(prevState: AuthFormState, formData: FormData) {
-  const supabase = await createClient();
+export async function signin(
+  _: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const t = await getTranslations("Errors");
 
-  const validate = SignInSchema.safeParse({
-    email: formData.get("email"),
-    password: formData.get("password"),
-  });
+  const data = Object.fromEntries(formData);
+  const validate = SignInSchema.safeParse(data);
 
   if (!validate.success) {
+    console.error(">>> Sign in action validation error:", {
+      error: validate.error,
+    });
     return {
       ok: false,
-      errors: validate.error.flatten().fieldErrors,
+      message: t("invalid_data"),
     };
   }
 
+  const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword(validate.data);
 
   if (error?.code === "invalid_credentials") {
-    console.error(">>> Sign in action error:", { error });
+    console.error(">>> Sign in action supabase error:", { error });
     return {
       ok: false,
-      errors: { password: [error.code ?? ""], email: [error.code ?? ""] },
+      message: t("invalid_credentials"),
     };
   } else if (error) {
-    return { ok: false, errors: { password: ["oops"] } };
+    return { ok: false, message: t("oops") };
   }
 
   revalidatePath("/", "layout");

@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -14,9 +14,9 @@ const buttonVariants = cva(
         outline:
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
         primary:
-          "border-2 border-orange-500 bg-orange-500 dark:bg-rose-600 dark:border-rose-600 text-white hover:border-orange-400 hover:bg-orange-400 dark:hover:border-rose-500 dark:hover:bg-rose-500",
+          "border-2 border-primary bg-primary text-white hover:border-primary-foreground hover:bg-primary-foreground",
         secondary:
-          "border-2 border-orange-500 dark:border-rose-600 bg-transparent text-orange-500 dark:text-rose-600 hover:bg-orange-500 dark:hover:bg-rose-500 dark:hover:border-rose-500 hover:text-white dark:hover:text-white",
+          "border-2 border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-white",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },

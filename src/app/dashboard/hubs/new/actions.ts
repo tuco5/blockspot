@@ -3,9 +3,9 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/server/supabase/server";
 import { db } from "@/server/db";
-import { newGroupSchema } from "./schema";
+import { newHubSchema } from "./schema";
 
-export async function createGroup(
+export async function createHub(
   _prevState: FormState,
   formData: FormData,
 ): Promise<FormState> {
@@ -24,7 +24,7 @@ export async function createGroup(
 
   // PARSING DATA:
   const data = Object.fromEntries(formData);
-  const validated = newGroupSchema.safeParse({
+  const validated = newHubSchema.safeParse({
     ...data,
     isPrivate: data.isPrivate === "on",
   });
@@ -36,7 +36,7 @@ export async function createGroup(
   }
 
   // DB MUTATION:
-  await db.group.create({
+  await db.hub.create({
     data: {
       ...validated.data,
       userId: user.id,

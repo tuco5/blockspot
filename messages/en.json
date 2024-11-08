@@ -12,6 +12,17 @@
       "laboratorios": "labs"
     }
   },
+  "DashboardPage": {
+    "new_hub": "New Hub",
+    "join_hub": "Join a Hub",
+    "empty_msg": "A 'hub' is a shared space and coordinated place, it functions as a meeting point for users and their activities. If you are not a member of a 'hub', create one.",
+    "not_found_msg": "No results found... Try again.",
+    "search_placeholder": "Filter your 'hubs' by name or location..."
+  },
+  "HubsPage": {
+    "title": "Explore public hubs",
+    "search_placeholder": "Search by name, location or owner..."
+  },
   "AuthLayout": { "sign-in": "Sign In", "sign-up": "Sign Up" },
   "SignInPage": {
     "title": "Sign in to Blockspot",
@@ -19,12 +30,6 @@
     "email": "Email",
     "password": "Password",
     "sign_up": "Sign Up Now",
-    "errors": {
-      "invalid_credentials": "Invalid login credentials",
-      "required": "Required",
-      "password_mismatch": "Passwords do not match",
-      "oops": "Oops, something went wrong"
-    },
     "button": "Sign in"
   },
   "SignUnPage": {
@@ -35,12 +40,6 @@
     "email": "Email",
     "password": "Password",
     "password_confirm": "Confirm Password",
-    "errors": {
-      "too_short": "Too short 8 characters minimum",
-      "too_long": "Too long 32 characters maximum",
-      "required": "Required",
-      "oops": "Oops, something went wrong"
-    },
     "button": "Sign up"
   },
   "ConfirmPage": {
@@ -58,5 +57,15 @@
     "es": "Spanish",
     "en": "English",
     "label": "Language"
+  },
+  "Errors": {
+    "too_short": "Too short",
+    "too_long": "Too long",
+    "required": "Required",
+    "invalid_email": "Invalid email",
+    "invalid_credentials": "Invalid login credentials",
+    "invalid_data": "Invalid data",
+    "password_mismatch": "Passwords do not match",
+    "oops": "Oops, something went wrong"
   }
 }

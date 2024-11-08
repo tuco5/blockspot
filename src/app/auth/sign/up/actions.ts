@@ -1,6 +1,7 @@
 "use server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { createClient } from "@/server/supabase/server";
 import { signUpSchema } from "./schema";
 
@@ -8,13 +9,15 @@ export async function signup(
   _: FormState,
   formData: FormData,
 ): Promise<FormState> {
+  const t = await getTranslations("Errors");
+
   const data = Object.fromEntries(formData);
   const validated = signUpSchema.safeParse(data);
 
   if (!validated.success) {
     return {
       ok: false,
-      message: "invalid_data",
+      message: t("invalid_data"),
     };
   }
 
@@ -31,7 +34,7 @@ export async function signup(
 
   if (error) {
     console.error(">>> Sign up action: supabase error:", { error });
-    return { ok: false, message: "oops" };
+    return { ok: false, message: t("oops") };
   }
 
   revalidatePath("/", "layout");

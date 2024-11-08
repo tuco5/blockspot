@@ -1,11 +1,11 @@
 import { Title } from "@/components/template";
-import { NewGroupForm } from "./form";
+import { NewHubForm } from "./form";
 
-export default async function NewGroupPage() {
+export default async function NewHubPage() {
   return (
     <main className="flex w-full max-w-screen-lg flex-col items-center gap-4 p-2">
-      <Title>Crea un nuevo grupo</Title>
-      <NewGroupForm />
+      <Title>Nuevo Hub</Title>
+      <NewHubForm />
     </main>
   );
 }
