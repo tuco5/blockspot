@@ -1,12 +1,17 @@
 "use client";
-import { type SignUpError } from "../types";
-import { useActionState, useState } from "react";
+import { useActionState, useRef } from "react";
 import Link from "next/link";
-import Form from "next/form";
+import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signUpSchema, type SignUpSchema } from "./schema";
 import { signup } from "./actions";
-import { FormInputField, FormSubmitButton } from "@/components/forms";
+import { cn } from "@/lib/utils";
+import {
+  ErrorMessages,
+  FormPasswordField,
+  FormSubmitButton,
+} from "@/components/forms";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -16,89 +21,112 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
-export default function SignupPage() {
+export default function SignUpPage() {
   const t = useTranslations("SignUnPage");
 
-  const [isPassMatching, setIsPassMatching] = useState(true);
-  const [passInput, setPassInput] = useState("");
-  const [confirmPassInput, setConfirmPassInput] = useState("");
-
-  const [loginState, loginAction, isPending] = useActionState(signup, {
-    ok: false,
-    errors: {},
+  const [formState, signupAction, isPending] = useActionState(signup, {
+    ok: undefined,
+    message: undefined,
   });
 
-  const onBlur = () => {
-    if (passInput && confirmPassInput) {
-      setIsPassMatching(passInput === confirmPassInput);
-    } else {
-      setIsPassMatching(true);
-    }
+  const form = useForm<SignUpSchema>({
+    resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
+  });
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const onSubmit = () => {
+    formRef.current?.requestSubmit();
   };
 
   return (
-    <Form action={loginAction} noValidate>
-      <Card className="flex flex-col gap-4">
-        <CardHeader className="pb-0">
-          <CardTitle className="text-3xl">{t("title")}</CardTitle>
-          <CardDescription>
-            <span>{t("description")}&nbsp;</span>
-            <Link
-              href="/auth/sign/in"
-              className={cn(buttonVariants({ variant: "link" }), "px-0")}
+    <Form {...form}>
+      <form action={signupAction} ref={formRef}>
+        <Card className="flex flex-col gap-1">
+          <CardHeader className="pb-0">
+            <CardTitle className="text-3xl">{t("title")}</CardTitle>
+            <CardDescription>
+              <span>{t("description")}&nbsp;</span>
+              <Link
+                href="/auth/sign/in"
+                className={cn(buttonVariants({ variant: "link" }), "px-0")}
+              >
+                {t("sign_in")} &rarr;
+              </Link>
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-2">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("name")}</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Jhon Doe" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("email")}</FormLabel>
+                  <FormControl>
+                    <Input placeholder="jhon.doe@example.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("password")}</FormLabel>
+                  <FormControl>
+                    <FormPasswordField
+                      placeholder="· · · · · · · ·"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </CardContent>
+          <CardFooter className="flex flex-col items-center justify-center gap-4">
+            <ErrorMessages error={formState.message} />
+            <FormSubmitButton
+              isPending={isPending}
+              onClick={form.handleSubmit(onSubmit)}
             >
-              {t("sign_in")} &rarr;
-            </Link>
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col">
-          <FormInputField
-            label={t("email")}
-            name="email"
-            type="email"
-            placeholder="jhon.doe@example.com"
-            errors={loginState.errors?.email?.map((err) =>
-              t(`errors.${err as SignUpError}`),
-            )}
-          />
-
-          <FormInputField
-            label={t("password")}
-            name="password"
-            type="password"
-            placeholder="· · · · · · · ·"
-            value={passInput}
-            onBlur={onBlur}
-            onFocus={() => setIsPassMatching(true)}
-            onChange={(e) => {
-              setPassInput(e.target.value);
-            }}
-            errors={loginState.errors?.password?.map((err) =>
-              t(`errors.${err as SignUpError}`),
-            )}
-          />
-
-          <FormInputField
-            label={t("confirm-password")}
-            name="confirm-password"
-            type="password"
-            placeholder="· · · · · · · ·"
-            value={confirmPassInput}
-            onBlur={onBlur}
-            onFocus={() => setIsPassMatching(true)}
-            onChange={(e) => {
-              setConfirmPassInput(e.target.value);
-            }}
-            errors={isPassMatching ? [] : [t(`errors.password_mismatch`)]}
-          />
-        </CardContent>
-        <CardFooter className="flex justify-center">
-          <FormSubmitButton isPending={isPending}>
-            {t("button")}
-          </FormSubmitButton>
-        </CardFooter>
-      </Card>
+              {t("button")}
+            </FormSubmitButton>
+          </CardFooter>
+        </Card>
+      </form>
     </Form>
   );
 }

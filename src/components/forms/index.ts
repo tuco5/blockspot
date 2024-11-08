@@ -1,3 +1,4 @@
 export * from "./FormSubmitButton";
-export * from "./FormInputField";
+export * from "./FormPasswordField";
 export * from "./ErrorMessages";
+export * from "./SearchForm";

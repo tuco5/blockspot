@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
+    previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -18,11 +19,13 @@ model User {
     image String?
     phone String?
 
-    ownerOf  Group[] @relation("owner")
-    memberOf Group[] @relation("members")
+    ownerOf  Hub[] @relation("owner")
+    memberOf Hub[] @relation("members")
+
+    @@map("users")
 }
 
-model Group {
+model Hub {
     id        String   @id @default(uuid()) @db.Uuid
     userId    String   @db.Uuid
     name      String
@@ -33,6 +36,8 @@ model Group {
     owner    User   @relation("owner", fields: [userId], references: [id], onDelete: Cascade)
     memebers User[] @relation("members")
     Spot     Spot[]
+
+    @@map("hubs")
 }
 
 model Spot {
@@ -42,7 +47,9 @@ model Spot {
 
     type SpotType
 
-    organization Group @relation(fields: [id], references: [id], onDelete: Cascade)
+    hub Hub @relation(fields: [id], references: [id], onDelete: Cascade)
+
+    @@map("spots")
 }
 
 enum SpotType {

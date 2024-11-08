@@ -1,35 +1,40 @@
 "use server";
-import { type AuthFormState } from "../types";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { z } from "zod";
+import { getTranslations } from "next-intl/server";
 import { createClient } from "@/server/supabase/server";
+import { signUpSchema } from "./schema";
 
-const SignUpSchema = z.object({
-  email: z.string().min(1, "required").email("invalid_email"),
-  password: z.string().min(8, "too_short").max(32, "too_long"),
-});
+export async function signup(
+  _: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const t = await getTranslations("Errors");
 
-export async function signup(prevState: AuthFormState, formData: FormData) {
-  const supabase = await createClient();
+  const data = Object.fromEntries(formData);
+  const validated = signUpSchema.safeParse(data);
 
-  const validate = SignUpSchema.safeParse({
-    email: formData.get("email"),
-    password: formData.get("password"),
-  });
-
-  if (!validate.success) {
+  if (!validated.success) {
     return {
       ok: false,
-      errors: validate.error.flatten().fieldErrors,
+      message: t("invalid_data"),
     };
   }
 
-  const { error } = await supabase.auth.signUp(validate.data);
+  const supabase = await createClient();
+  const { error } = await supabase.auth.signUp({
+    email: validated.data.email,
+    password: validated.data.password,
+    options: {
+      data: {
+        name: validated.data.name,
+      },
+    },
+  });
 
   if (error) {
-    console.error(">>> Sign up action error:", { error });
-    return { ok: false, errors: { password: ["oops"] } };
+    console.error(">>> Sign up action: supabase error:", { error });
+    return { ok: false, message: t("oops") };
   }
 
   revalidatePath("/", "layout");
