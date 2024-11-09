@@ -9,12 +9,14 @@ import {
 import { getQueryParams } from "@/server/utils/getQueryParams";
 import { getHubsAction } from "./actions";
 
-export default async function HubsPage(props: {
-  params: Params;
+export default async function HubsPage({
+  searchParams,
+}: {
+  params: EmptyParams;
   searchParams: SearchParams;
 }) {
   const t = await getTranslations("HubsPage");
-  const { search, take } = await getQueryParams(props.searchParams);
+  const { search, take } = await getQueryParams(searchParams);
 
   const queryClient = new QueryClient();
   await queryClient.prefetchInfiniteQuery({
