@@ -59,7 +59,7 @@ async function HeaderContentNoUser() {
           asChild
           variant="primary"
           rounded="full"
-          className="hidden h-8 sm:flex"
+          className="h-7 text-sm sm:h-8 sm:text-base"
         >
           <Link href="/auth/sign/in">{t("sign_in")}</Link>
         </Button>
