@@ -28,7 +28,7 @@ function HubCard({ name, image, id }: HubCardProps) {
   const imgSize = "h-48 w-48";
   return (
     <Link
-      href={`/hubs/${id}`}
+      href={`/dashboard/hubs/${id}`}
       className={cn("relative flex overflow-hidden rounded-lg", imgSize)}
     >
       {image ? (

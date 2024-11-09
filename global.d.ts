@@ -19,7 +19,7 @@ declare global {
   };
 
   // page props
-  type Params = Promise<{ slug: string }>;
+  type Params<K> = Promise<{ [key in K]: string }>;
   type SearchParams = Promise<{ [key: string]: string | undefined }>;
   type QueryParams = {
     search?: string;
