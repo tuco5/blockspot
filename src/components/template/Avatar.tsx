@@ -15,31 +15,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { createClient } from "@/server/supabase/client";
 import { type User } from "@supabase/supabase-js";
-import { LogOut, Settings, User as UserIcon } from "lucide-react";
+import { LogOut, User as UserIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { Button } from "../ui/button";
-import Link from "next/link";
 
 interface AvatarProps {
-  user: User | null;
+  user: User;
 }
 export function Avatar({ user }: AvatarProps) {
   const t = useTranslations("AvatarMenu");
   const router = useRouter();
-
-  if (!user) {
-    return (
-      <Button
-        asChild
-        variant="primary"
-        rounded="full"
-        className="hidden h-8 sm:flex"
-      >
-        <Link href="/auth/sign/in">{t("sign_in")}</Link>
-      </Button>
-    );
-  }
 
   const supabase = createClient();
   const Logout = () => {
@@ -64,10 +49,6 @@ export function Avatar({ user }: AvatarProps) {
           <DropdownMenuItem>
             <UserIcon />
             <span>{t("profile")}</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Settings />
-            <span>{t("settings")}</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

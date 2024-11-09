@@ -2,7 +2,13 @@
 import { useTransition } from "react";
 import { type Locale } from "@/server/i18n/config";
 import { setUserLocale } from "@/server/i18n/service";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Languages } from "lucide-react";
 
 type Item = { label: string; value: string };
@@ -12,7 +18,11 @@ interface LocaleSwitcherSelectProps {
   label: string;
 }
 
-export default function LocaleSwitcherSelect({ defaultValue, items, label }: LocaleSwitcherSelectProps) {
+export default function LocaleSwitcherSelect({
+  defaultValue,
+  items,
+  label,
+}: LocaleSwitcherSelectProps) {
   const [_, startTransition] = useTransition();
 
   function onChange(value: string) {
@@ -25,14 +35,22 @@ export default function LocaleSwitcherSelect({ defaultValue, items, label }: Loc
   return (
     <div className="relative">
       <Select defaultValue={defaultValue} onValueChange={onChange}>
-        <SelectTrigger aria-label={label} withIcon={false} className="h-8 dark:bg-indigo-900/40">
+        <SelectTrigger
+          aria-label={label}
+          withIcon={false}
+          className="flex h-8 w-8 justify-center rounded-full p-0 dark:bg-indigo-900/40"
+        >
           <SelectValue>
-            <Languages className="h-4 w-4" />
+            <Languages className="h-3.5 w-3.5" />
           </SelectValue>
         </SelectTrigger>
         <SelectContent className="dark:bg-indigo-950">
           {items.map((item) => (
-            <SelectItem key={item.value} value={item.value} className="dark:focus:bg-indigo-900">
+            <SelectItem
+              key={item.value}
+              value={item.value}
+              className="dark:focus:bg-indigo-900"
+            >
               {item.label}
             </SelectItem>
           ))}

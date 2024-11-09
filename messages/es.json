@@ -4,6 +4,7 @@
     "subtitulo": "Tu solución definitiva para la gestión de espacios compartidos",
     "cta": "Empezar",
     "precios": "Precios",
+    "sign_in": "Iniciar",
     "espacios": {
       "canchas": "canchas",
       "terrazas": "terrazas",
@@ -14,8 +15,8 @@
   },
   "DashboardPage": {
     "new_hub": "Hub Nuevo",
-    "join_hub": "Unirme a un Hub",
-    "empty_msg": "Un 'hub' es un espacio compartido y coordinado, funciona como punto de encuentro para los usuarios y sus actividades. Si aun no eres miembro de un 'hub', crea uno.",
+    "join_hub": "Unirme",
+    "empty_msg": "Un 'hub' es un espacio compartido, funciona como punto de encuentro para los usuarios y sus actividades.",
     "not_found_msg": "No encontramos resultados... Intenta de nuevo.",
     "search_placeholder": "Filtra tus 'hubs' por nombre o lugar..."
   },
@@ -46,12 +47,20 @@
     "title": "¡Ya casi estás!",
     "subtitle": "Revisa tu bandeja de entrada y confirmar tu correo"
   },
+  "Settings": {
+    "title": "Configuraciones",
+    "description": "Configuraciones de tu cuenta"
+  },
+  "Notifications": {
+    "title": "Notificaciones",
+    "description": "Checa tu bandeja de entrada.",
+    "empty": "No tienes notificaciones nuevas.",
+    "close": "Cerrar"
+  },
   "AvatarMenu": {
     "account": "Mi cuenta",
     "profile": "Mi perfil",
-    "settings": "Configuraciones",
-    "logout": "Cerrar sesión",
-    "sign_in": "Iniciar"
+    "logout": "Cerrar sesión"
   },
   "LocaleSwitcher": {
     "es": "Español",

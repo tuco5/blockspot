@@ -4,6 +4,7 @@
     "subtitulo": "Your definitive solution for managing shared spaces",
     "cta": "Get started",
     "precios": "Pricing",
+    "sign_in": "Log in",
     "espacios": {
       "canchas": "tennis court",
       "terrazas": "terrace",
@@ -15,7 +16,7 @@
   "DashboardPage": {
     "new_hub": "New Hub",
     "join_hub": "Join a Hub",
-    "empty_msg": "A 'hub' is a shared space and coordinated place, it functions as a meeting point for users and their activities. If you are not a member of a 'hub', create one.",
+    "empty_msg": "A 'hub' is a shared space place, it functions as a meeting point for users and their activities.",
     "not_found_msg": "No results found... Try again.",
     "search_placeholder": "Filter your 'hubs' by name or location..."
   },
@@ -46,12 +47,20 @@
     "title": "Almost there!",
     "subtitle": "Check your inbox to confirm your email"
   },
+  "Settings": {
+    "title": "Settings",
+    "description": "Settings for your account"
+  },
+  "Notifications": {
+    "title": "Notifications",
+    "description": "Check your inbox.",
+    "empty": "Nothing new to show here.",
+    "close": "Close"
+  },
   "AvatarMenu": {
-    "account": "Miy Account",
+    "account": "My Account",
     "profile": "My Profile",
-    "settings": "Settings",
-    "logout": "Sign Out",
-    "sign_in": "Log in"
+    "logout": "Sign Out"
   },
   "LocaleSwitcher": {
     "es": "Spanish",
