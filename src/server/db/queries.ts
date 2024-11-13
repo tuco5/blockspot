@@ -1,12 +1,13 @@
 import "server-only";
 import { createClient } from "../supabase/server";
 import { db } from ".";
+import { redirect } from "next/navigation";
 
 export async function getMyHubs() {
   const supabase = await createClient();
   const { data: auth } = await supabase.auth.getUser();
 
-  if (!auth.user) throw new Error("Unauthorized");
+  if (!auth.user) redirect("/");
 
   const hubs = await db.hub.findMany({
     where: {
