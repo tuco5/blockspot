@@ -1,15 +1,15 @@
 "use client";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import useBreakPoints from "@/hooks/useBreakPoints";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface LogoProps extends Props {
   href?: string;
 }
 export function Logo({ className, href = "/" }: LogoProps) {
-  const isPhone = useBreakPoints("sm");
+  const isMobile = useIsMobile();
 
-  if (isPhone) {
+  if (isMobile) {
     return (
       <Link href={href} className={cn("font-semibold", className)}>
         b<span className="text-orange-500 dark:text-rose-500">spot</span>
