@@ -12,3 +12,16 @@ export function PageTemplate({ children, className }: PropsWithChildren) {
     </div>
   );
 }
+
+export function MainContent({ children, className }: PropsWithChildren) {
+  return (
+    <main
+      className={cn(
+        "flex w-full max-w-screen-lg flex-col items-center gap-6 p-2",
+        className,
+      )}
+    >
+      {children}
+    </main>
+  );
+}

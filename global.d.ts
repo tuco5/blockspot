@@ -7,9 +7,9 @@ declare global {
   interface Props {
     className?: string;
   }
-  interface Children {
+  type Children = Readonly<{
     children: React.ReactNode;
-  }
+  }>;
   type PropsWithChildren = Props & Children;
 
   // form

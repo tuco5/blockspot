@@ -4,6 +4,7 @@ import { MoveRight, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { getMyHubs } from "@/server/db";
+import { MainContent } from "@/components/template";
 import DashboardHubsList from "./_components/DashboardHubsList";
 
 export default async function DashboardPage() {
@@ -12,7 +13,7 @@ export default async function DashboardPage() {
   const myHubs = await getMyHubs();
 
   return (
-    <main className="flex w-full max-w-screen-lg flex-col items-center gap-6 px-2 py-6">
+    <MainContent className="px-2 py-6">
       <div className="flex w-full max-w-screen-md justify-between gap-8">
         <Link
           href="/dashboard/hubs/new"
@@ -33,6 +34,6 @@ export default async function DashboardPage() {
       </div>
 
       <DashboardHubsList hubs={myHubs} />
-    </main>
+    </MainContent>
   );
 }

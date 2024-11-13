@@ -1,4 +1,4 @@
-import { Title } from "@/components/template";
+import { MainContent, Title } from "@/components/template";
 import { getTranslations } from "next-intl/server";
 import { SearchHubsList } from "./_components/SearchHubsList";
 import {
@@ -27,12 +27,12 @@ export default async function HubsPage({
   });
 
   return (
-    <main className="flex min-h-screen w-full max-w-screen-lg flex-col items-center gap-8 p-2">
+    <MainContent className="gap-8">
       <Title className="mt-6">{t("title")}</Title>
 
       <HydrationBoundary state={dehydrate(queryClient)}>
         <SearchHubsList />
       </HydrationBoundary>
-    </main>
+    </MainContent>
   );
 }
