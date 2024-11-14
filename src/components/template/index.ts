@@ -1,4 +1,5 @@
 export * from "./Avatar";
+export * from "./BreadcrumbMenu";
 export * from "./Footer";
 export * from "./Header";
 export * from "./HubsList";
