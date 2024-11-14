@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { MainContent } from "@/components/template";
 
 type Tab = {
   name: keyof IntlMessages["AuthLayout"];
@@ -33,8 +34,8 @@ export default function AuthLayout({
   const pathname = usePathname();
 
   return (
-    <main className="mt-10 flex h-[70vh] w-full justify-center">
-      <div className="flex w-[400px] flex-col gap-2">
+    <MainContent className="mt-4">
+      <div className="flex max-w-[400px] flex-col gap-4">
         <div className="flex w-full gap-2 rounded-lg bg-slate-100 p-2 dark:bg-black/40">
           {tabs.map((tab) => {
             return (
@@ -55,6 +56,6 @@ export default function AuthLayout({
         </div>
         <div>{children}</div>
       </div>
-    </main>
+    </MainContent>
   );
 }
