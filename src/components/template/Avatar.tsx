@@ -31,6 +31,7 @@ export function Avatar({ user }: AvatarProps) {
     supabase.auth
       .signOut()
       .then(() => router.refresh())
+      .then(() => router.push("/"))
       .catch(console.error);
   };
 
