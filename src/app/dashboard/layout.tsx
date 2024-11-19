@@ -1,6 +1,8 @@
 import { Header, PageTemplate } from "@/components/template";
-import { createClient } from "@/server/supabase/server";
 import { redirect } from "next/navigation";
+import { SidebarMenu } from "@/components/template/SidebarMenu";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { createClient } from "@/server/supabase/server";
 
 export default async function DashboardLayout({
   children,
@@ -13,9 +15,13 @@ export default async function DashboardLayout({
   if (!user) redirect("/");
 
   return (
-    <PageTemplate>
-      <Header />
-      {children}
-    </PageTemplate>
+    <SidebarProvider>
+      <SidebarMenu />
+      <PageTemplate>
+        <SidebarTrigger />
+        <Header />
+        {children}
+      </PageTemplate>
+    </SidebarProvider>
   );
 }
